@@ -1,0 +1,4 @@
+# Cache
+/cache/class_index.php
+/cache/smarty/cache
+/cache/smarty/compile
