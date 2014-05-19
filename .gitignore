@@ -1,4 +1,4 @@
 # Cache
-/cache/class_index.php
-/cache/smarty/cache
-/cache/smarty/compile
+/store/cache/class_index.php
+/store/cache/smarty/cache
+/store/cache/smarty/compile
