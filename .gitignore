@@ -1,4 +1,5 @@
 # Cache
+/img/tmp
 /store/cache/class_index.php
 /store/cache/smarty/cache
 /store/cache/smarty/compile
