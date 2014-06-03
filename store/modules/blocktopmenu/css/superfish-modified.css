@@ -13,9 +13,10 @@
 	list-style:		none;
 }
 .sf-menu {
-	margin: 10px 0;
+	margin: 32px 0;
 	padding:0;
-	width:980px;/* 980 */
+	margin-left:140px;
+	width:840px;/* 980 - 140 (logo size (128) + 12 padding) */
 	background: #383838;
 }
 .sf-menu ul {

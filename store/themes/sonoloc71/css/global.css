@@ -39,7 +39,10 @@ a {cursor:pointer}
 		struture
 ************************************************************************************************ */
 #page {}
-	#header {z-index:10}
+	#header {
+		z-index:10;
+		margin-bottom: 64px
+	}
 	#columns {z-index:1}
 		#left_column {}
 		#center_column {}
@@ -287,7 +290,9 @@ table.table_block  td {
 }
 
 /* BLOCK .block ******************************************************************************** */
-.block {margin-bottom:20px}
+.block {
+	margin-bottom:32px;
+}
 #footer .block {margin-bottom:0}
 	.block .title_block, .block h4 {
 		padding:6px 11px;
@@ -547,7 +552,7 @@ div.star_hover a, div.star a:hover { background-position: 0 -32px }
 #header_logo {
 	position: absolute;
 	left:0;
-	top: 30px;
+	top: 10px;
 	z-index: 1;
 }
 
