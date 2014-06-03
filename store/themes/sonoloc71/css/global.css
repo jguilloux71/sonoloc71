@@ -300,8 +300,9 @@ table.table_block  td {
 		color:#fff;
 		text-shadow:0 1px 0 #000;
 		text-transform:uppercase;
-		background:#383838;
+		background:#8A2F29;
 		font-weight: bold;
+		border-radius: 7px;
 	}
 		.block .title_block a, .block h4 a {color:#fff}
 	.block ul {list-style-type:none}
@@ -641,7 +642,8 @@ ul.idTabs li {
 }
 .idTabs .selected {
 	color:#000;
-	background: url(../img/bg_li_idTabs.png) repeat-x 0 0
+	background: url(../img/bg_li_idTabs.png) repeat-x 0 0;
+	border-radius: 8px 8px 0px 0px;
 }
 
 #more_info_sheets {padding-top:10px}
