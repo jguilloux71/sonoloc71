@@ -24,10 +24,10 @@
 *}
 
 <div id="contact_block" class="block">
-	<p class="title_block">{l s='Contact us' mod='blockcontact'}</p>
+	<h4 class="title_block">{l s='Contact us' mod='blockcontact'}</h4>
 	<div class="block_content clearfix">
-			<p>{l s='Our hotline is available 24/7' mod='blockcontact'}</p>
+			<p>Nous sommes disponibles pour répondre à toutes vos questions</p>
 			{if $telnumber != ''}<p class="tel"><span class="label">{l s='Phone:' mod='blockcontact'}</span>{$telnumber|escape:'htmlall':'UTF-8'}</p>{/if}
-			{if $email != ''}<a href="mailto:{$email|escape:'htmlall':'UTF-8'}">{l s='Contact our hotline' mod='blockcontact'}</a>{/if}
+			{if $email != ''}<a href="{$email|escape:'htmlall':'UTF-8'}">Cliquez ici pour nous envoyer un message</a>{/if}
 	</div>
 </div>

@@ -72,8 +72,14 @@ p.center {text-align:center}
 /* title *************************************************************************************** */
 h1 {
 	margin-bottom:20px;
-	font-size:24px;
-	line-height: 22px
+    padding: 6px 11px;
+	font-size:12px;
+    text-shadow: 0 1px 0 #000;
+    text-transform: uppercase;
+    background: #8A2F29;
+	line-height: 16px;
+    color: #FFF;
+    border-radius: 7px;
 }
 h2 {
 	padding-bottom:20px;
