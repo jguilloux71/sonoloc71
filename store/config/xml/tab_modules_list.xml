@@ -20,14 +20,13 @@
 </tab>
 <tab class_name="AdminManufacturers" display_type="slider_list">
 <module name="ebay" position="1"/>
-<module name="nqgatewayneteven" position="2"/>
+<module name="neteven" position="2"/>
 <module name="ecopresto" position="3"/>
 <module name="twenga" position="4"/>
 <module name="shoppingfluxexport" position="5"/>
-<module name="amazon" position="6"/>
-<module name="gmerchantcenter" position="7"/>
-<module name="leguide" position="8"/>
-<module name="productsbybrandslider" position="9"/>
+<module name="gmerchantcenter" position="6"/>
+<module name="leguide" position="7"/>
+<module name="productsbybrandslider" position="8"/>
 </tab>
 <tab class_name="AdminSuppliers" display_type="slider_list">
 <module name="ecopresto" position="1"/>
@@ -42,7 +41,7 @@
 <module name="prestafraud" position="1"/>
 <module name="gshopping" position="2"/>
 <module name="ebay" position="3"/>
-<module name="nqgatewayneteven" position="4"/>
+<module name="neteven" position="4"/>
 <module name="ecopresto" position="5"/>
 <module name="gadwords" position="6"/>
 <module name="fianetfraud" position="7"/>
@@ -50,7 +49,6 @@
 <module name="shoppingfluxexport" position="9"/>
 <module name="orlique" position="10"/>
 <module name="printlabels" position="11"/>
-<module name="pushoncart" position="12"/>
 </tab>
 <tab class_name="AdminInvoices" display_type="slider_list">
 <module name="itembase" position="1"/>
@@ -92,16 +90,16 @@
 </tab>
 <tab class_name="AdminCarts" display_type="slider_list">
 <module name="followup" position="1"/>
-<module name="cartabandonmentpro" position="2"/>
+<module name="cartabandonment" position="2"/>
 </tab>
 <tab class_name="AdminCustomerThreads" display_type="slider_list">
-<module name="sendinblue" position="1"/>
+<module name="mailinblue" position="1"/>
 <module name="mailjet" position="2"/>
 <module name="fianetsceau" position="3"/>
 <module name="zingaya" position="4"/>
 </tab>
 <tab class_name="AdminContacts" display_type="slider_list">
-<module name="sendinblue" position="1"/>
+<module name="mailinblue" position="1"/>
 <module name="mailjet" position="2"/>
 <module name="iadvize" position="3"/>
 <module name="olark" position="4"/>
@@ -109,7 +107,7 @@
 </tab>
 <tab class_name="AdminCartRules" display_type="slider_list">
 <module name="pushoncart" position="1"/>
-<module name="cartabandonmentpro" position="2"/>
+<module name="cartabandonment" position="2"/>
 </tab>
 <tab class_name="AdminSpecificPriceRule" display_type="slider_list">
 <module name="pushoncart" position="1"/>
@@ -140,8 +138,6 @@
 <module name="pushslide" position="21"/>
 <module name="vente_flash" position="22"/>
 <module name="privatesale" position="23"/>
-<module name="browsi" position="24"/>
-<module name="giveit" position="25"/>
 </tab>
 <tab class_name="AdminCarriers" display_type="slider_list">
 <module name="globkurier" position="1"/>
@@ -175,7 +171,6 @@
 <module name="expeditor" position="13"/>
 <module name="orderpreparation" position="14"/>
 <module name="upstracking" position="15"/>
-<module name="gointerpay" position="16"/>
 </tab>
 <tab class_name="AdminLocalization" display_type="slider_list">
 <module name="textmaster" position="1"/>
@@ -194,39 +189,33 @@
 <tab class_name="AdminPayment" display_type="default_list">
 <module name="ferbuy" position="1"/>
 <module name="paypal" position="2"/>
-<module name="desjardins" position="3"/>
-<module name="paypalusa" position="4"/>
-<module name="merchantware" position="5"/>
-<module name="moneybookers" position="6"/>
-<module name="stripejs" position="7"/>
-<module name="adyen" position="8"/>
-<module name="syspay" position="9"/>
-<module name="ogone" position="10"/>
-<module name="sofortbanking" position="11"/>
-<module name="hipay" position="12"/>
-<module name="klikandpay" position="13"/>
-<module name="realexredirect" position="14"/>
-<module name="trustly" position="15"/>
-<module name="authorizeaim" position="16"/>
-<module name="kwixo" position="17"/>
-<module name="atos" position="18"/>
-<module name="bankwire" position="19"/>
-<module name="cheque" position="20"/>
-<module name="firstdata" position="21"/>
-<module name="payulatam" position="22"/>
-<module name="klarnaprestashop" position="23"/>
-<module name="cmcicpaiement" position="24"/>
-<module name="pagseguro" position="25"/>
-<module name="cashondelivery" position="26"/>
-<module name="gcheckout" position="27"/>
-<module name="paybox" position="28"/>
-<module name="lacaixa" position="29"/>
-<module name="qiwi" position="30"/>
-<module name="worldpay" position="31"/>
-<module name="dotpay" position="32"/>
-<module name="bluepay" position="33"/>
-<module name="alliance3" position="34"/>
-<module name="paymentsense" position="35"/>
+<module name="paypalusa" position="3"/>
+<module name="merchantware" position="4"/>
+<module name="moneybookers" position="5"/>
+<module name="stripejs" position="6"/>
+<module name="adyen" position="7"/>
+<module name="syspay" position="8"/>
+<module name="ogone" position="9"/>
+<module name="sofortbanking" position="10"/>
+<module name="hipay" position="11"/>
+<module name="klikandpay" position="12"/>
+<module name="realexredirect" position="13"/>
+<module name="trustly" position="14"/>
+<module name="authorizeaim" position="15"/>
+<module name="kwixo" position="16"/>
+<module name="atos" position="17"/>
+<module name="bankwire" position="18"/>
+<module name="cheque" position="19"/>
+<module name="firstdata" position="20"/>
+<module name="payulatam" position="21"/>
+<module name="klarnaprestashop" position="22"/>
+<module name="cmcicpaiement" position="23"/>
+<module name="Pagseguro" position="24"/>
+<module name="cashondelivery" position="25"/>
+<module name="gcheckout" position="26"/>
+<module name="lacaixa" position="27"/>
+<module name="qiwi" position="28"/>
+<module name="dotpay" position="29"/>
 </tab>
 <tab class_name="AdminOrderPreferences" display_type="slider_list">
 <module name="mailalerts" position="1"/>
@@ -244,7 +233,48 @@
 </tab>
 <tab class_name="AdminThemes" display_type="slider_list">
 <module name="shopgate" position="1"/>
-<module name="gadsense" position="2"/>
+<module name="blockwishlist" position="2"/>
+<module name="blocklayered" position="3"/>
+<module name="blocksharefb" position="4"/>
+<module name="blockcontact" position="5"/>
+<module name="blockcontactinfos" position="6"/>
+<module name="blockcustomerprivacy" position="7"/>
+<module name="blockpaymentlogo" position="8"/>
+<module name="blockreinsurance" position="9"/>
+<module name="blocksocial" position="10"/>
+<module name="blockcms" position="11"/>
+<module name="blockcart" position="12"/>
+<module name="blockadvertising" position="13"/>
+<module name="blockbestsellers" position="14"/>
+<module name="blockcategories" position="15"/>
+<module name="crossselling" position="16"/>
+<module name="blockcurrencies" position="17"/>
+<module name="homefeatured" position="18"/>
+<module name="gadsense" position="19"/>
+<module name="editorial" position="20"/>
+<module name="homeslider" position="21"/>
+<module name="themeinstallator" position="22"/>
+<module name="blocklanguages" position="23"/>
+<module name="blocklink" position="24"/>
+<module name="blockmanufacturer" position="25"/>
+<module name="blockmyaccount" position="26"/>
+<module name="blockmyaccountfooter" position="27"/>
+<module name="blocknewproducts" position="28"/>
+<module name="blocknewsletter" position="29"/>
+<module name="blockpermanentlinks" position="30"/>
+<module name="productcomments" position="31"/>
+<module name="productscategory" position="32"/>
+<module name="producttooltip" position="33"/>
+<module name="blocksearch" position="34"/>
+<module name="blockrss" position="35"/>
+<module name="sendtoafriend" position="36"/>
+<module name="blockspecials" position="37"/>
+<module name="blockstore" position="38"/>
+<module name="blocksupplier" position="39"/>
+<module name="blocktags" position="40"/>
+<module name="blocktopmenu" position="41"/>
+<module name="blockuserinfo" position="42"/>
+<module name="blockviewed" position="43"/>
 </tab>
 <tab class_name="AdminMeta" display_type="slider_list">
 <module name="gsitemap" position="1"/>
@@ -267,7 +297,7 @@
 <module name="pm_advancedsearch4" position="2"/>
 </tab>
 <tab class_name="AdminEmails" display_type="slider_list">
-<module name="sendinblue" position="1"/>
+<module name="mailinblue" position="1"/>
 <module name="mailjet" position="2"/>
 <module name="newsletter" position="3"/>
 <module name="mynewsletter" position="4"/>
