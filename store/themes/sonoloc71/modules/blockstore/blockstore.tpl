@@ -24,7 +24,7 @@
 *}
 <!-- Block stores module -->
 <div id="stores_block_left" class="block">
-	<p class="title_block"><a href="{$link->getPageLink('stores')|escape:'html'}" title="{l s='Our stores' mod='blockstore'}">{l s='Our stores' mod='blockstore'}</a></p>
+	<p class="title_block"><a href="{$link->getPageLink('stores')|escape:'html'}" title="{l s='Our stores' mod='blockstore'}">Notre magasin</a></p>
 	<div class="block_content blockstore">
 		<p class="store_image"><a href="{$link->getPageLink('stores')|escape:'html'}" title="{l s='Our stores' mod='blockstore'}"><img src="{$link->getMediaLink("`$module_dir``$store_img|escape:'htmlall':'UTF-8'`")}" alt="{l s='Our stores' mod='blockstore'}" width="174" height="115" /></a></p>
 		<p>

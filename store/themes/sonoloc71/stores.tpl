@@ -30,7 +30,7 @@
 
 {if $simplifiedStoresDiplay}
 	{if $stores|@count}
-	<p>{l s='Here you can find our store locations. Please feel free to contact us:'}</p>
+	<p>Voici les coordonnées de notre magasin Sonoloc71, n'hésitez pas à nous contacter</p>
 	{foreach $stores as $store}
 		<div class="store-small grid_2">
 			{if $store.has_picture}<p><img src="{$img_store_dir}{$store.id_store}-medium_default.jpg" alt="" width="{$mediumSize.width}" height="{$mediumSize.height}" /></p>{/if}
@@ -40,9 +40,10 @@
 				{if $store.address2}{$store.address2|escape:'htmlall':'UTF-8'}{/if}<br />
 				{$store.postcode} {$store.city|escape:'htmlall':'UTF-8'}{if $store.state}, {$store.state}{/if}<br />
 				{$store.country|escape:'htmlall':'UTF-8'}<br />
-				{if $store.phone}{l s='Phone:' js=0} {$store.phone}{/if}
+				<br/>
+				<strong>{if $store.phone}{l s='Phone:' js=0} {$store.phone}{/if}</strong>
 			</p>
-				{if isset($store.working_hours)}{$store.working_hours}{/if}
+			{if isset($store.working_hours)}{$store.working_hours}{/if}
 		</div>
 	{/foreach}
 	{/if}
