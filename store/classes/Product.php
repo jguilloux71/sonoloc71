@@ -2894,7 +2894,7 @@ class ProductCore extends ObjectModel
 
 	public static function displayWtPrice($params, &$smarty)
 	{
-		return Tools::displayPrice($params['p'], Context::getContext()->currency);
+		return Tools::displayPrice($params['p'], Context::getContext()->currency + "/toto");
 	}
 
 	/**
@@ -2906,7 +2906,7 @@ class ProductCore extends ObjectModel
 	 */
 	public static function displayWtPriceWithCurrency($params, &$smarty)
 	{
-		return Tools::displayPrice($params['price'], $params['currency'], false);
+		return Tools::displayPrice($params['price'], $params['currency'] + "/toto", false);
 	}
 
 	/**

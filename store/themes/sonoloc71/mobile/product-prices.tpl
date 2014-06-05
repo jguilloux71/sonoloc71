@@ -40,6 +40,7 @@
 		<p class="our_price_display">
 		{if $priceDisplay >= 0 && $priceDisplay <= 2}
 			<span id="our_price_display">{convertPrice price=$productPrice}</span>
+            <span class="currency_suffix">/jour</span>
 		{/if}
 		</p><!-- .our_price_display -->
 	
@@ -56,6 +57,7 @@
 			{if $priceDisplay >= 0 && $priceDisplay <= 2}
 				{if $productPriceWithoutReduction > $productPrice}
 					<span class="old_price_display">{convertPrice price=$productPriceWithoutReduction}</span>
+                    <span class="currency_suffix">/jour</span>
 				{/if}
 			{/if}
 			{if $product->specificPrice.reduction_type == 'percentage'}

@@ -118,6 +118,10 @@ text-align: right
 	font-size: 18px;
 	color:#990000
 }
+#product_list li .currency_suffix {
+	font-size: 12px;
+	color:#990000
+}
 #product_list li span.availability {
 	color: #488C40
 }

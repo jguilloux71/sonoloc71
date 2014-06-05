@@ -300,11 +300,21 @@ span.view_scroll_spacer {
 	text-decoration:line-through;
 }
 
+span.currency_suffix_product_old {
+	font-size:10px;
+	text-decoration:line-through;
+}
+
 .our_price_display {
 	padding-bottom:10px;
 	font-weight:700;
 	font-size:24px;
 	line-height:18px;
+	color:#9b0000;
+}
+span.currency_suffix_product {
+	font-size:14px;
+	font-weight:normal;
 	color:#9b0000;
 }
 

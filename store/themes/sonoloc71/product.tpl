@@ -390,6 +390,7 @@ var fieldRequired = '{l s='Please fill in all the required fields before saving 
 				<p class="our_price_display">
 				{if $priceDisplay >= 0 && $priceDisplay <= 2}
 					<span id="our_price_display">{convertPrice price=$productPrice}</span>
+                    <span class="currency_suffix_product">/jour</span>
 					<!--{if $tax_enabled  && ((isset($display_tax_label) && $display_tax_label == 1) OR !isset($display_tax_label))}
 						{if $priceDisplay == 1}{l s='tax excl.'}{else}{l s='tax incl.'}{/if}
 					{/if}-->
@@ -418,6 +419,7 @@ var fieldRequired = '{l s='Please fill in all the required fields before saving 
 			<p id="old_price"{if !$product->specificPrice || !$product->specificPrice.reduction} class="hidden"{/if}>
 			{if $priceDisplay >= 0 && $priceDisplay <= 2}
 					<span id="old_price_display">{if $productPriceWithoutReduction > $productPrice}{convertPrice price=$productPriceWithoutReduction}{/if}</span>
+                    <span class="currency_suffix_product_old">/jour</span>
 					<!-- {if $tax_enabled && $display_tax_label == 1}{if $priceDisplay == 1}{l s='tax excl.'}{else}{l s='tax incl.'}{/if}{/if} -->
 			{/if}
 			</p>
