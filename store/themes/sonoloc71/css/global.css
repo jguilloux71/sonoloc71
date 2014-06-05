@@ -41,7 +41,7 @@ a {cursor:pointer}
 #page {}
 	#header {
 		z-index:10;
-		margin-bottom: 64px
+		margin-bottom: 96px
 	}
 	#columns {z-index:1}
 		#left_column {}
