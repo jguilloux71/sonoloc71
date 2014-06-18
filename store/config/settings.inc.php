@@ -1,7 +1,7 @@
 <?php
 define('_DB_SERVER_', 'localhost');
 define('_DB_NAME_', 'sonolocf_sonoloc71_db');
-define('_DB_USER_', 'sonoloc');
+define('_DB_USER_', 'sonolocf_sonoloc');
 define('_DB_PASSWD_', 'FmsP75.dsT9.');
 define('_DB_PREFIX_', 'ps_sonoloc71_');
 define('_MYSQL_ENGINE_', 'InnoDB');
