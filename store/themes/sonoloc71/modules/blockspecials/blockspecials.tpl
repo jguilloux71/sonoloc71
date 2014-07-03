@@ -19,7 +19,7 @@
 *
 *  @author PrestaShop SA <contact@prestashop.com>
 *  @copyright  2007-2013 PrestaShop SA
-*  @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+*  @license	http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *  International Registered Trademark & Property of PrestaShop SA
 *}
 
@@ -45,14 +45,22 @@
 
 					<p class="s_title_block"><a href="{$special.link|escape:'html'}" title="{$special.name|escape:html:'UTF-8'}">{$special.name|escape:html:'UTF-8'}</a></p>
 				{if !$PS_CATALOG_MODE}
-                    <div>
-					    <span class="price-discount">{if !$priceDisplay}{displayWtPrice p=$special.price_without_reduction}{else}{displayWtPrice p=$priceWithoutReduction_tax_excl}{/if}</span>
-                        <span class="currency_suffix_discount">/jour</span>
-                    </div>
-                    <div>
-					    <span class="price">{if !$priceDisplay}{displayWtPrice p=$special.price}{else}{displayWtPrice p=$special.price_tax_exc}{/if}</span>
-                        <span class="currency_suffix">/jour</span>
-                    </div>
+					<div>
+						<span class="price-discount">{if !$priceDisplay}{displayWtPrice p=$special.price_without_reduction}{else}{displayWtPrice p=$priceWithoutReduction_tax_excl}{/if}</span>
+						{if !empty($special.ean13) && $special.ean13 == '9999999999999'}
+							<span class="currency_suffix_discount">/week-end</span>
+						{else}
+							<span class="currency_suffix_discount">/jour</span>
+						{/if}
+					</div>
+					<div>
+						<span class="price">{if !$priceDisplay}{displayWtPrice p=$special.price}{else}{displayWtPrice p=$special.price_tax_exc}{/if}</span>
+						{if !empty($special.ean13) && $special.ean13 == '9999999999999'}
+							<span class="currency_suffix">/week-end</span>
+						{else}
+							<span class="currency_suffix">/jour</span>
+						{/if}
+					</div>
 				{/if}
 			</li>
 		</ul>

@@ -19,7 +19,7 @@
 *
 *  @author PrestaShop SA <contact@prestashop.com>
 *  @copyright  2007-2013 PrestaShop SA
-*  @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+*  @license	http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *  International Registered Trademark & Property of PrestaShop SA
 *}
 
@@ -50,7 +50,14 @@
 				<div class="comparison_product_infos">
 					<div class="prices_container">
 					{if isset($product->show_price) && $product->show_price && !isset($restricted_country_mode) && !$PS_CATALOG_MODE}
-						<p class="price_container"><span class="price">{convertPrice price=$product->getPrice($taxes_behavior)}</span></p>
+						<p class="price_container">
+	                        <span class="price">{convertPrice price=$product->getPrice($taxes_behavior)}</span>
+	                        {if !empty($product->ean13) && $product->ean13 == '9999999999999'}
+	                            <span class="currency_suffix">/week-end</span>
+	                        {else}
+	                            <span class="currency_suffix">/jour</span>
+	                        {/if}
+	                    </p>
 						<div class="product_discount">
 						{if $product->on_sale}
 							<span class="on_sale">{l s='On sale!'}</span>

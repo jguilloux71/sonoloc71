@@ -19,7 +19,7 @@
 *
 *  @author PrestaShop SA <contact@prestashop.com>
 *  @copyright  2007-2013 PrestaShop SA
-*  @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+*  @license	http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *  International Registered Trademark & Property of PrestaShop SA
 *}
 
@@ -390,7 +390,11 @@ var fieldRequired = '{l s='Please fill in all the required fields before saving 
 				<p class="our_price_display">
 				{if $priceDisplay >= 0 && $priceDisplay <= 2}
 					<span id="our_price_display">{convertPrice price=$productPrice}</span>
-                    <span class="currency_suffix_product">/jour</span>
+	                {if !empty($product->ean13) && $product->ean13 == '9999999999999'}
+	                    <span class="currency_suffix_product">/week-end</span>
+	                {else}
+	                    <span class="currency_suffix_product">/jour</span>
+	                {/if}
 					<!--{if $tax_enabled  && ((isset($display_tax_label) && $display_tax_label == 1) OR !isset($display_tax_label))}
 						{if $priceDisplay == 1}{l s='tax excl.'}{else}{l s='tax incl.'}{/if}
 					{/if}-->
@@ -419,7 +423,11 @@ var fieldRequired = '{l s='Please fill in all the required fields before saving 
 			<p id="old_price"{if !$product->specificPrice || !$product->specificPrice.reduction} class="hidden"{/if}>
 			{if $priceDisplay >= 0 && $priceDisplay <= 2}
 					<span id="old_price_display">{if $productPriceWithoutReduction > $productPrice}{convertPrice price=$productPriceWithoutReduction}{/if}</span>
-                    <span class="currency_suffix_product_old">/jour</span>
+	                {if !empty($product->ean13) && $product->ean13 == '9999999999999'}
+	                    <span class="currency_suffix_product_old">/week-end</span>
+	                {else}
+	                    <span class="currency_suffix_product_old">/jour</span>
+	                {/if}
 					<!-- {if $tax_enabled && $display_tax_label == 1}{if $priceDisplay == 1}{l s='tax excl.'}{else}{l s='tax incl.'}{/if}{/if} -->
 			{/if}
 			</p>
@@ -522,9 +530,9 @@ var fieldRequired = '{l s='Please fill in all the required fields before saving 
 		<!-- product's features -->
 		<ul id="idTab2" class="bullet">
 		{foreach from=$features item=feature}
-            {if isset($feature.value)}
-			    <li><span>{$feature.name|escape:'htmlall':'UTF-8'}</span> {$feature.value|escape:'htmlall':'UTF-8'}</li>
-            {/if}
+	        {if isset($feature.value)}
+				<li><span>{$feature.name|escape:'htmlall':'UTF-8'}</span> {$feature.value|escape:'htmlall':'UTF-8'}</li>
+	        {/if}
 		{/foreach}
 		</ul>
 	{/if}

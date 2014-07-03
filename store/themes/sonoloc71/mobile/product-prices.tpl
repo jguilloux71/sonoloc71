@@ -19,7 +19,7 @@
 *
 *  @author PrestaShop SA <contact@prestashop.com>
 *  @copyright  2007-2013 PrestaShop SA
-*  @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+*  @license	http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *  International Registered Trademark & Property of PrestaShop SA
 *}
 
@@ -40,7 +40,11 @@
 		<p class="our_price_display">
 		{if $priceDisplay >= 0 && $priceDisplay <= 2}
 			<span id="our_price_display">{convertPrice price=$productPrice}</span>
-            <span class="currency_suffix">/jour</span>
+	        {if !empty($product->ean13) && $product->ean13 == '9999999999999'}
+	            <span class="currency_suffix">/week-end</span>
+	        {else}
+	            <span class="currency_suffix">/jour</span>
+	        {/if}
 		{/if}
 		</p><!-- .our_price_display -->
 	
@@ -57,7 +61,11 @@
 			{if $priceDisplay >= 0 && $priceDisplay <= 2}
 				{if $productPriceWithoutReduction > $productPrice}
 					<span class="old_price_display">{convertPrice price=$productPriceWithoutReduction}</span>
-                    <span class="currency_suffix">/jour</span>
+	                {if !empty($product->ean13) && $product->ean13 == '9999999999999'}
+	                    <span class="currency_suffix">/week-end</span>
+	                {else}
+	                    <span class="currency_suffix">/jour</span>
+	                {/if}
 				{/if}
 			{/if}
 			{if $product->specificPrice.reduction_type == 'percentage'}
