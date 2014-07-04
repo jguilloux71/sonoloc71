@@ -64,11 +64,11 @@
 <!-- End of Facebook -->
 
 <div class="social_search">
-    <div class="fb-like" data-href="https://www.facebook.com/Kaleessi" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+    <div class="fb-like" data-href="https://www.facebook.com/sonoloc71" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
     <br/>
     <br/>
     <div id="twitter">
-        <a href="https://twitter.com/kaleessi71" class="twitter-follow-button" data-show-count="false" data-lang="fr" data-show-screen-name="false">Suivre @kaleessi71</a>
+        <a href="https://twitter.com/sonoloc71" class="twitter-follow-button" data-show-count="false" data-lang="fr" data-show-screen-name="false">Suivre @sonoloc71</a>
         <script>
             (function(d, s, id) {
                 var js,fjs=d.getElementsByTagName(s)[0], p=/^http:/.test(d.location)?'http':'https';
@@ -81,10 +81,10 @@
             }(document, 'script', 'twitter-wjs'));
         </script>
         <a href="http://twitter.com/share" class="twitter-share-button"
-            data-url="http://www.kaleessi.fr"
-            data-via="kaleessi71"
-            data-text="Kaleessi, salon de pose d'ongles sur Mâcon et beauté des mains et des pieds"
-            data-related="kaleessi71"
+            data-url="http://www.sonoloc71.fr"
+            data-via="sonoloc71"
+            data-text="Sonoloc71, Location de Sonorisation - Éclairage - Vidéo - Tous Types d’Événements"
+            data-related="sonoloc71"
             data-count="horizontal"
             data-lang="fr">Tweet</a>
     </div>
