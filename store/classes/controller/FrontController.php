@@ -732,16 +732,17 @@ class FrontControllerCore extends Controller
 		if (Tools::file_exists_cache(_PS_ROOT_DIR_.Tools::str_replace_once(__PS_BASE_URI__, DIRECTORY_SEPARATOR, _THEME_CSS_DIR_.'grid_prestashop.css')))
 			$this->addCSS(_THEME_CSS_DIR_.'grid_prestashop.css', 'all');
 		$this->addCSS(_THEME_CSS_DIR_.'global.css', 'all');
+        $this->addCSS('./js/jquery/plugins/fancybox/jquery.fancybox.css', 'all');
 		$this->addjquery();
 		$this->addjqueryPlugin('easing');
 		$this->addJS(_PS_JS_DIR_.'tools.js');
+        $this->addjqueryPlugin('fancybox');
+        $this->addjqueryPlugin('cookies');
 
 		if (Tools::isSubmit('live_edit') && Tools::getValue('ad') && Tools::getAdminToken('AdminModulesPositions'.(int)Tab::getIdFromClassName('AdminModulesPositions').(int)Tools::getValue('id_employee')))
 		{
 			$this->addJqueryUI('ui.sortable');
-			$this->addjqueryPlugin('fancybox');
 			$this->addJS(_PS_JS_DIR_.'hookLiveEdit.js');
-			$this->addCSS(_PS_CSS_DIR_.'jquery.fancybox-1.3.4.css', 'all'); // @TODO
 		}
 		if ($this->context->language->is_rtl)
 			$this->addCSS(_THEME_CSS_DIR_.'rtl.css');
