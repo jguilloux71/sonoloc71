@@ -1,7 +1,8 @@
 Bonjour,
 
-Merci de votre inscription à notre newsletter
+Votre inscription à la newsletter Sonoloc71 a été correctement prise en compte.
 
+Cordialement,
+L'équipe Sonoloc71
 
-
-{shop_url} réalisé avec PrestaShop™
+{shop_url}
