@@ -30,7 +30,7 @@
 
 {if $simplifiedStoresDiplay}
 	{if $stores|@count}
-	<p>Voici les coordonnées de notre magasin Sonoloc71, n'hésitez pas à nous contacter</p>
+	<p>Voici les coordonnées de notre dépôt Sonoloc71, n'hésitez pas à nous contacter</p>
 	{foreach $stores as $store}
 		<div class="store-small grid_2">
 			{if $store.has_picture}<p><img src="{$img_store_dir}{$store.id_store}-medium_default.jpg" alt="" width="{$mediumSize.width}" height="{$mediumSize.height}" /></p>{/if}
