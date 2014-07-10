@@ -20,7 +20,7 @@
 *
 *  @author PrestaShop SA <contact@prestashop.com>
 *  @copyright  2007-2013 PrestaShop SA
-*  @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+*  @license	http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
 *  International Registered Trademark & Property of PrestaShop SA
 */
 
@@ -164,6 +164,7 @@ class ContactControllerCore extends FrontController
 									'{message}' => Tools::nl2br(stripslashes($message)),
 									'{email}' =>  $from,
 									'{product_name}' => '',
+									'{object}' => $contact->name,
 								);
 
 					if (isset($fileAttachment['name']))
@@ -182,7 +183,7 @@ class ContactControllerCore extends FrontController
 						$var_list['{order_name}'] = $order->getUniqReference();
 						$var_list['{id_order}'] = $id_order;
 					}
-					
+
 					if ($id_product)
 					{
 						$product = new Product((int)$id_product);
@@ -190,18 +191,46 @@ class ContactControllerCore extends FrontController
 							$var_list['{product_name}'] = $product->name[Context::getContext()->language->id];
 					}
 
-					if (empty($contact->email))
-						Mail::Send($this->context->language->id, 'contact_form', ((isset($ct) && Validate::isLoadedObject($ct)) ? sprintf(Mail::l('Your message has been correctly sent #ct%1$s #tc%2$s'), $ct->id, $ct->token) : Mail::l('Your message has been correctly sent')), $var_list, $from, null, null, null, $fileAttachment);
-					else
-					{					
-						if (!Mail::Send($this->context->language->id, 'contact', Mail::l('Message from contact form').' [no_sync]',
-							$var_list, $contact->email, $contact->name, $from, ($customer->id ? $customer->firstname.' '.$customer->lastname : ''),
-									$fileAttachment) ||
-								!Mail::Send($this->context->language->id, 'contact_form', ((isset($ct) && Validate::isLoadedObject($ct)) ? sprintf(Mail::l('Your message has been correctly sent #ct%1$s #tc%2$s'), $ct->id, $ct->token) : Mail::l('Your message has been correctly sent')), $var_list, $from, null, $contact->email, $contact->name, $fileAttachment))
-									$this->errors[] = Tools::displayError('An error occurred while sending the message.');
+					if (empty($contact->email)) {
+						Mail::Send(
+							$this->context->language->id,
+							'contact_form',
+							'Votre ouech a été correctement envoyé à notre équipe',
+							$var_list,
+							$from,
+							null,
+							null,
+							'Sonoloc71',
+							$fileAttachment);
+					}
+					else {
+						if (!Mail::Send(
+								$this->context->language->id,
+								'contact',
+								'Demande du site internet - ' . $contact->name,
+								$var_list,
+								$contact->email,
+								'Sonoloc71',
+								$from,
+								($customer->id ? $customer->firstname.' '.$customer->lastname : ''),
+								$fileAttachment
+							) ||
+							!Mail::Send(
+								$this->context->language->id,
+								'contact_form',
+								'Votre message a été correctement envoyé à notre équipe',
+								$var_list,
+								$from,
+								null,
+								$contact->email,
+								'Sonoloc71',
+								$fileAttachment
+							)) {
+							$this->errors[] = Tools::displayError('An error occurred while sending the message.');
+						}
 					}
 				}
-				
+
 				if (count($this->errors) > 1)
 					array_unique($this->errors);
 				else

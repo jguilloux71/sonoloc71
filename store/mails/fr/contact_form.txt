@@ -1,15 +1,14 @@
-Votre message a bien été envoyé à notre service client.
+Votre message a bien été envoyé à notre équipe.
 
-Votre message :
+Objet : {object}
+
+Votre message ci-dessous :
 
 {message}
 
-Référence commande : {order_name}
-
-Fichier attaché : {attached_file}
-
-Nous vous répondrons dés que possible.
+Nous allons vous répondre le plus rapidement possible.
 
 Cordialement,
+L'équipe Sonoloc71
 
-{shop_url} réalisé avec PrestaShop™
+{shop_url}
