@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+	<name>pss_newssubscribers</name>
+	<displayName><![CDATA[PSS/Newsletter block subscribers]]></displayName>
+	<version><![CDATA[0.8]]></version>
+	<description><![CDATA[&lt;style type=&quot;text/css&quot;&gt;a.descriptionLink {color:blue;text-decoration:underline;} a.descriptionLink:hover{color:red;text-decoration:none;}div.pssDescriptionDiv {background:#6a6a6a; color:white; padding:3px; margin-top:2px;}&lt;/style&gt;&lt;div class=&quot;pssDescriptionDiv&quot;&gt;Manage list of front-office newsletter block subscribers.&lt;br /&gt;&lt;b&gt;Click on configure link to access to module content.&lt;/b&gt;&lt;/div&gt;]]></description>
+	<author><![CDATA[PrestaScope]]></author>
+	<tab><![CDATA[administration]]></tab>
+	<is_configurable>1</is_configurable>
+	<need_instance>1</need_instance>
+	<limited_countries></limited_countries>
+</module>
