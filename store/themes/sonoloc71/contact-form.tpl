@@ -77,52 +77,9 @@
 					<input type="text" id="email" name="from" value="{$email|escape:'htmlall':'UTF-8'}" />
 				{/if}
 			</p>
-		{if !$PS_CATALOG_MODE}
-			{if (!isset($customerThread.id_order) || $customerThread.id_order > 0)}
-			<p class="text select">
-				<label for="id_order">{l s='Order reference'}</label>
-				{if !isset($customerThread.id_order) && isset($isLogged) && $isLogged == 1}
-					<select name="id_order" >
-						<option value="0">{l s='-- Choose --'}</option>
-						{foreach from=$orderList item=order}
-							<option value="{$order.value|intval}" {if $order.selected|intval}selected="selected"{/if}>{$order.label|escape:'htmlall':'UTF-8'}</option>
-						{/foreach}
-					</select>
-				{elseif !isset($customerThread.id_order) && empty($isLogged)}
-					<input type="text" name="id_order" id="id_order" value="{if isset($customerThread.id_order) && $customerThread.id_order|intval > 0}{$customerThread.id_order|intval}{else}{if isset($smarty.post.id_order) && !empty($smarty.post.id_order)}{$smarty.post.id_order|intval}{/if}{/if}" />
-				{elseif $customerThread.id_order|intval > 0}
-					<input type="text" name="id_order" id="id_order" value="{$customerThread.id_order|intval}" readonly="readonly" />
-				{/if}
-			</p>
-			{/if}
-			{if isset($isLogged) && $isLogged}
-			<p class="text select">
-			<label for="id_product">{l s='Product'}</label>
-				{if !isset($customerThread.id_product)}
-				{foreach from=$orderedProductList key=id_order item=products name=products}
-					<select name="id_product" id="{$id_order}_order_products" class="product_select" style="width:300px;{if !$smarty.foreach.products.first} display:none; {/if}" {if !$smarty.foreach.products.first}disabled="disabled" {/if}>
-						<option value="0">{l s='-- Choose --'}</option>
-						{foreach from=$products item=product}
-							<option value="{$product.value|intval}">{$product.label|escape:'htmlall':'UTF-8'}</option>
-						{/foreach}
-					</select>
-				{/foreach}
-				{elseif $customerThread.id_product > 0}
-					<input type="text" name="id_product" id="id_product" value="{$customerThread.id_product|intval}" readonly="readonly" />
-				{/if}
-			</p>
-			{/if}
-		{/if}
-		{if $fileupload == 1}
-			<p class="text">
-			<label for="fileUpload">{l s='Attach File'}</label>
-				<input type="hidden" name="MAX_FILE_SIZE" value="2000000" />
-				<input type="file" name="fileUpload" id="fileUpload" />
-			</p>
-		{/if}
 		<p class="textarea">
 			<label for="message">{l s='Message'}</label>
-			 <textarea id="message" name="message" rows="15" cols="10">{if isset($message)}{$message|escape:'htmlall':'UTF-8'|stripslashes}{/if}</textarea>
+			 <textarea id="message" name="message" rows="30" cols="20">{if isset($message)}{$message|escape:'htmlall':'UTF-8'|stripslashes}{/if}</textarea>
 		</p>
 		<p class="submit">
 			<input type="submit" name="submitMessage" id="submitMessage" value="{l s='Send'}" class="button_large" />
