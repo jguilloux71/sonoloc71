@@ -303,7 +303,7 @@ var fieldRequired = '{l s='Please fill in all the required fields before saving 
 									{assign var="default_colorpicker" value=""}
 									{foreach from=$group.attributes key=id_attribute item=group_attribute}
 									<li{if $group.default == $id_attribute} class="selected"{/if}>
-										<a id="color_{$id_attribute|intval}" class="color_pick{if ($group.default == $id_attribute)} selected{/if}" style="background: {$colors.$id_attribute.value};" title="{$colors.$id_attribute.name}" onclick="colorPickerClick(this);getProductAttribute();">
+										<a id="color_{$id_attribute|intval}" class="color_pick{if ($group.default == $id_attribute)} selected{/if}" style="backgeound: {$colors.$id_attribute.value};" title="{$colors.$id_attribute.name}" onclick="colorPickerClick(this);getProductAttribute();">
 											{if file_exists($col_img_dir|cat:$id_attribute|cat:'.jpg')}
 												<img src="{$img_col_dir}{$id_attribute}.jpg" alt="{$colors.$id_attribute.name}" width="20" height="20" /><br />
 											{/if}
@@ -390,11 +390,11 @@ var fieldRequired = '{l s='Please fill in all the required fields before saving 
 				<p class="our_price_display">
 				{if $priceDisplay >= 0 && $priceDisplay <= 2}
 					<span id="our_price_display">{convertPrice price=$productPrice}</span>
-	                {if !empty($product->ean13) && $product->ean13 == '9999999999999'}
-	                    <span class="currency_suffix_product">/week-end</span>
-	                {else}
-	                    <span class="currency_suffix_product">/jour</span>
-	                {/if}
+					{if !empty($product->ean13) && $product->ean13 == '9999999999999'}
+						<span class="currency_suffix_product">/week-end</span>
+					{else}
+						<span class="currency_suffix_product">/jour</span>
+					{/if}
 					<!--{if $tax_enabled  && ((isset($display_tax_label) && $display_tax_label == 1) OR !isset($display_tax_label))}
 						{if $priceDisplay == 1}{l s='tax excl.'}{else}{l s='tax incl.'}{/if}
 					{/if}-->
@@ -412,22 +412,29 @@ var fieldRequired = '{l s='Please fill in all the required fields before saving 
 					<span id="pretaxe_price"><span id="pretaxe_price_display">{convertPrice price=$product->getPrice(false, $smarty.const.NULL)}</span>&nbsp;{l s='tax excl.'}</span>
 				{/if}
 			</div>
-			<p id="reduction_percent" {if !$product->specificPrice OR $product->specificPrice.reduction_type != 'percentage'} style="display:none;"{/if}><span id="reduction_percent_display">{if $product->specificPrice AND $product->specificPrice.reduction_type == 'percentage'}-{$product->specificPrice.reduction*100}%{/if}</span></p>
+			<p id="reduction_percent" {if !$product->specificPrice OR $product->specificPrice.reduction_type != 'percentage'} style="display:none;"{/if}>
+				<span id="reduction_percent_display">
+					{if $product->specificPrice AND $product->specificPrice.reduction_type == 'percentage'}
+						-{$product->specificPrice.reduction*100}%
+					{/if}
+				</span>
+			</p>
 			<p id="reduction_amount" {if !$product->specificPrice OR $product->specificPrice.reduction_type != 'amount' || $product->specificPrice.reduction|intval ==0} style="display:none"{/if}>
 				<span id="reduction_amount_display">
-				{if $product->specificPrice AND $product->specificPrice.reduction_type == 'amount' AND $product->specificPrice.reduction|intval !=0}
-					-{convertPrice price=$productPriceWithoutReduction-$productPrice|floatval}
-				{/if}
+					{if $product->specificPrice AND $product->specificPrice.reduction_type == 'amount' AND $product->specificPrice.reduction|intval !=0}
+						{$percent = (($productPriceWithoutReduction-$productPrice)/$productPriceWithoutReduction)*100}
+						-{$percent|round:0}%
+					{/if}
 				</span>
 			</p>
 			<p id="old_price"{if !$product->specificPrice || !$product->specificPrice.reduction} class="hidden"{/if}>
 			{if $priceDisplay >= 0 && $priceDisplay <= 2}
 					<span id="old_price_display">{if $productPriceWithoutReduction > $productPrice}{convertPrice price=$productPriceWithoutReduction}{/if}</span>
-	                {if !empty($product->ean13) && $product->ean13 == '9999999999999'}
-	                    <span class="currency_suffix_product_old">/week-end</span>
-	                {else}
-	                    <span class="currency_suffix_product_old">/jour</span>
-	                {/if}
+					{if !empty($product->ean13) && $product->ean13 == '9999999999999'}
+						<span class="currency_suffix_product_old">/week-end</span>
+					{else}
+						<span class="currency_suffix_product_old">/jour</span>
+					{/if}
 					<!-- {if $tax_enabled && $display_tax_label == 1}{if $priceDisplay == 1}{l s='tax excl.'}{else}{l s='tax incl.'}{/if}{/if} -->
 			{/if}
 			</p>
@@ -530,9 +537,9 @@ var fieldRequired = '{l s='Please fill in all the required fields before saving 
 		<!-- product's features -->
 		<ul id="idTab2" class="bullet">
 		{foreach from=$features item=feature}
-	        {if isset($feature.value)}
+			{if isset($feature.value)}
 				<li><span>{$feature.name|escape:'htmlall':'UTF-8'}</span> {$feature.value|escape:'htmlall':'UTF-8'}</li>
-	        {/if}
+			{/if}
 		{/foreach}
 		</ul>
 	{/if}
