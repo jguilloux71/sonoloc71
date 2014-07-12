@@ -39,14 +39,14 @@
 		</div>
 	{/if}
 
-    <a href="index.php?id_cms=8&controller=cms&content_only=1" id="hidden_start_link" style="visibility: hidden"></a>
+    <a href="http://www.sonoloc71.fr/index.php?id_cms=8&controller=cms&content_only=1" id="hidden_start_link" style="visibility:hidden"></a>
 
     <script type="text/javascript">
         $(document).ready(function() {
             var check_cookie = $.cookie('popupatstart');
             if (check_cookie == null) {
                 var date = new Date();
-                var hours = 4;
+                var hours = 24;
                 date.setTime(date.getTime() + (hours * 60 * 60 * 1000));
                 $.cookie("popupatstart", "1", { expires: date });
                 $("#hidden_start_link").fancybox(
