@@ -24,7 +24,7 @@
 *}
 
 <div id="contact_block" class="block">
-	<h4 class="title_block">{l s='Contact us' mod='blockcontact'}</h4>
+	<h4 class="title_block">Contactez-nous / Devis</h4>
 	<div class="block_content clearfix">
 			<p>Nous sommes disponibles pour répondre à toutes vos questions</p>
 			{if $telnumber != ''}<p class="tel"><span class="label">{l s='Phone:' mod='blockcontact'}</span>{$telnumber|escape:'htmlall':'UTF-8'}</p>{/if}
