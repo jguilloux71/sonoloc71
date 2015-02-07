@@ -39,6 +39,8 @@
 		</div>
 	{/if}
 
+<!-- Deactivate sondage popup -->
+<!--
     <a href="http://www.sonoloc71.fr/index.php?id_cms=8&controller=cms&content_only=1" id="hidden_start_link" style="visibility:hidden"></a>
 
     <script type="text/javascript">
@@ -59,6 +61,7 @@
             }
         });
     </script>
+-->
 
 	</body>
 </html>
