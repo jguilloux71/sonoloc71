@@ -19,7 +19,7 @@
 *
 *  @author PrestaShop SA <contact@prestashop.com>
 *  @copyright  2007-2013 PrestaShop SA
-*  @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+*  @license	http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *  International Registered Trademark & Property of PrestaShop SA
 *}
 
@@ -30,7 +30,12 @@
 
 {if $simplifiedStoresDiplay}
 	{if $stores|@count}
-	<p>Voici les coordonnées de notre dépôt Sonoloc71, n'hésitez pas à nous contacter</p>
+	<p><strong>Pour cause de déplacements fréquents, tout passage à notre dépôt doit se faire sur rendez-vous. En aucun cas vous ne devez vous présenter de vous-mêmes sans nous avoir contacter préalablement.
+	<br/>
+	<br/>
+	Pour nous contacter, vous pouvez le faire par téléphone au 06 52 89 49 86 ou bien par mail via <a href="http://www.sonoloc71.fr/contactez-nous">notre formulaire en ligne</a>.</strong></p>
+	<br/>
+	<p>Voici les coordonnées de notre dépôt Sonoloc71 :</p>
 	{foreach $stores as $store}
 		<div class="store-small grid_2">
 			{if $store.has_picture}<p><img src="{$img_store_dir}{$store.id_store}-medium_default.jpg" alt="" width="{$mediumSize.width}" height="{$mediumSize.height}" /></p>{/if}
@@ -93,7 +98,7 @@
 		<input type="button" class="button" onclick="searchLocations();" value="{l s='Search'}" style="display: inline;" /> 
 	</p>
 	<div><select id="locationSelect"><option></option></select></div>
-    <div id="map"></div>
+	<div id="map"></div>
 	<table cellpadding="0" cellspacing="0" border="0" id="stores-table" class="table_block">
 		<tr>
 			<th>{l s='#'}</th>
