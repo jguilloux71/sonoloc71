@@ -82,6 +82,7 @@
 			 <textarea id="message" name="message" rows="30" cols="20">{if isset($message)}{$message|escape:'htmlall':'UTF-8'|stripslashes}{/if}</textarea>
 		</p>
 		<p class="submit">
+			<br/>
 			<input type="submit" name="submitMessage" id="submitMessage" value="{l s='Send'}" class="button_large" />
 		</p>
 	</fieldset>

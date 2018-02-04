@@ -195,7 +195,7 @@ class ContactControllerCore extends FrontController
 						Mail::Send(
 							$this->context->language->id,
 							'contact_form',
-							'Votre ouech a été correctement envoyé à notre équipe',
+							'Votre message a été correctement envoyé à notre équipe',
 							$var_list,
 							$from,
 							null,
