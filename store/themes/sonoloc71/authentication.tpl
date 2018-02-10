@@ -192,6 +192,7 @@ $(document).ready(function() {
 	{/if}-->
 	<form action="{$link->getPageLink('authentication', true)|escape:'html'}" method="post" id="create-account_form" class="std">
 		<fieldset>
+			<!-- Disable registration
 			<h3>{l s='Create an account'}</h3>
 			<div class="form_content clearfix">
 				<p class="title_block">{l s='Please enter your email address to create an account.'}</p>
@@ -206,11 +207,14 @@ $(document).ready(function() {
 					<input type="hidden" class="hidden" name="SubmitCreate" value="{l s='Create an account'}" />
 				</p>
 			</div>
+			-->
+			<h3>{l s='Registration currently unavailable'}</h3>
 		</fieldset>
 	</form>
 
 	<form action="{$link->getPageLink('authentication', true)|escape:'html'}" method="post" id="login_form" class="std">
 		<fieldset>
+			<!-- Disable login
 			<h3>{l s='Already registered?'}</h3>
 			<div class="form_content clearfix">
 				<p class="text">
@@ -227,6 +231,8 @@ $(document).ready(function() {
 					<input type="submit" id="SubmitLogin" name="SubmitLogin" class="button" value="{l s='Authentication'}" />
 				</p>
 			</div>
+			-->
+			<h3>{l s='Signin currently unavailable'}</h3>
 		</fieldset>
 	</form>
 
