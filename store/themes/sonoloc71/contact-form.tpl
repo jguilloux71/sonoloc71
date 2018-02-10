@@ -77,7 +77,7 @@
 					<input type="text" id="email" name="from" value="{$email|escape:'htmlall':'UTF-8'}" />
 				{/if}
 			</p>
-		<p class="textarea">
+		<p class="textarea" style="margin-left:3px">
 			<label for="message">{l s='Message'}</label>
 			 <textarea id="message" name="message" rows="30" cols="20">{if isset($message)}{$message|escape:'htmlall':'UTF-8'|stripslashes}{/if}</textarea>
 		</p>
