@@ -33,7 +33,7 @@
 	<p><strong>Pour cause de déplacements fréquents, tout passage à notre dépôt doit se faire sur rendez-vous. En aucun cas vous ne devez vous présenter de vous-mêmes sans nous avoir contacter préalablement.
 	<br/>
 	<br/>
-	Pour nous contacter, vous pouvez le faire par téléphone au 06 52 89 49 86 ou bien par mail via <a href="http://www.sonoloc71.fr/contactez-nous">notre formulaire en ligne</a>.</strong></p>
+	Pour nous contacter, vous pouvez le faire par téléphone au 06 52 89 49 86 ou bien par mail via <a href="http://www.sonoloc71.fr/contact-us">notre formulaire en ligne</a>.</strong></p>
 	<br/>
 	<p>Voici les coordonnées de notre dépôt Sonoloc71 :</p>
 	{foreach $stores as $store}
