@@ -949,9 +949,12 @@ class FrontControllerCore extends Controller
 
         $this->addCSS(_THEME_CSS_DIR_.'grid_prestashop.css', 'all');  // retro compat themes 1.5.0.1
         $this->addCSS(_THEME_CSS_DIR_.'global.css', 'all');
+        $this->addCSS('./js/jquery/plugins/fancybox/jquery.fancybox.css', 'all');
         $this->addJquery();
         $this->addJqueryPlugin('easing');
         $this->addJS(_PS_JS_DIR_.'tools.js');
+        $this->addjqueryPlugin('fancybox');
+        $this->addjqueryPlugin('cookies');
         $this->addJS(_THEME_JS_DIR_.'global.js');
 
         // Automatically add js files from js/autoload directory in the template
@@ -973,7 +976,6 @@ class FrontControllerCore extends Controller
 
         if (Tools::isSubmit('live_edit') && Tools::getValue('ad') && Tools::getAdminToken('AdminModulesPositions'.(int)Tab::getIdFromClassName('AdminModulesPositions').(int)Tools::getValue('id_employee'))) {
             $this->addJqueryUI('ui.sortable');
-            $this->addjqueryPlugin('fancybox');
             $this->addJS(_PS_JS_DIR_.'hookLiveEdit.js');
         }
 

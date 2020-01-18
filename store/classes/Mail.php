@@ -296,7 +296,7 @@ class MailCore extends ObjectModel
             }
 
             /* Create mail and attach differents parts */
-            $subject = '['.Configuration::get('PS_SHOP_NAME', null, null, $id_shop).'] '.$subject;
+            $subject = '[Sonoloc71] ' . $subject;
             $message->setSubject($subject);
 
             $message->setCharset('utf-8');

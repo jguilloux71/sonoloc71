@@ -55,6 +55,8 @@ class ContactControllerCore extends FrontController
                 $this->errors[] = Tools::displayError('Bad file extension');
             } elseif ($url === false || !empty($url) || $saveContactKey != (Tools::getValue('contactKey'))) {
                 $this->errors[] = Tools::displayError('An error occurred while sending the message.');
+            else if (!($gcaptcha = (int)(Tools::getValue('g-recaptcha-response')))) {
+                $this->errors[] = Tools::displayError('Captcha not verified');
             } else {
                 $customer = $this->context->customer;
                 if (!$customer->id) {
@@ -174,6 +176,7 @@ class ContactControllerCore extends FrontController
                                     '{message}' => Tools::nl2br(stripslashes($message)),
                                     '{email}' =>  $from,
                                     '{product_name}' => '',
+                                    '{object}' => $contact->name,
                                 );
 
                     if (isset($file_attachment['name'])) {
@@ -195,10 +198,41 @@ class ContactControllerCore extends FrontController
                         }
                     }
 
-                    if (!empty($contact->email)) {
-                        if (!Mail::Send($this->context->language->id, 'contact', Mail::l('Message from contact form').' [no_sync]',
-                            $var_list, $contact->email, $contact->name, null, null,
-                                    $file_attachment, null,    _PS_MAIL_DIR_, false, null, null, $from)) {
+                    if (empty($contact->email)) {
+                        Mail::Send(
+                            $this->context->language->id,
+                            'contact_form',
+                            'Votre message a été correctement envoyé à notre équipe',
+                            $var_list,
+                            $from,
+                            null,
+                            null,
+                            'Sonoloc71',
+                            $fileAttachment);
+                    }
+                    else {
+                        if (!Mail::Send(
+                                $this->context->language->id,
+                                'contact',
+                                'Demande du site internet - ' . $contact->name,
+                                $var_list,
+                                $contact->email,
+                                'Sonoloc71',
+                                $from,
+                                ($customer->id ? $customer->firstname.' '.$customer->lastname : ''),
+                                $fileAttachment
+                            ) ||
+                            !Mail::Send(
+                                $this->context->language->id,
+                                'contact_form',
+                                'Votre message a été correctement envoyé à notre équipe',
+                                $var_list,
+                                $from,
+                                null,
+                                $contact->email,
+                                'Sonoloc71',
+                                $fileAttachment
+                            )) {
                             $this->errors[] = Tools::displayError('An error occurred while sending the message.');
                         }
                     }

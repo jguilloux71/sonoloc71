@@ -667,7 +667,21 @@ class Blocknewsletter extends Module
 	 */
 	protected function sendConfirmationEmail($email)
 	{
-		return Mail::Send($this->context->language->id, 'newsletter_conf', Mail::l('Newsletter confirmation', $this->context->language->id), array(), pSQL($email), null, null, null, null, null, dirname(__FILE__).'/mails/', false, $this->context->shop->id);
+		return Mail::Send(
+			$this->context->language->id,
+			'newsletter_conf',
+			'Inscription à la newsletter',
+			array(),
+			pSQL($email),
+			null,
+			'contact@sonoloc71.fr',
+			'Sonoloc71',
+			null,
+			null,
+			dirname(__FILE__).'/mails/',
+			false,
+			$this->context->shop->id
+		);
 	}
 
 	/**
