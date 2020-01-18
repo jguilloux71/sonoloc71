@@ -3,7 +3,6 @@
 	padding:7px;
 	border:1px solid #ccc;
 	background:#eee;
-    margin-top: 50px;
 }
 #newsletter_block_left .title_block, #newsletter_block_left h4  {
 	padding:0 0 12px 28px;
@@ -55,3 +54,6 @@
 }
 *:first-child+html #newsletter_block_left input.button_mini {padding-left:24px !important;}/* hack ie 7 */
 
+#gdpr_consent {
+    margin-top:20px;
+}

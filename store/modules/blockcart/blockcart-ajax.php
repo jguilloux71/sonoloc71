@@ -1,6 +1,6 @@
 <?php
 /*
-* 2007-2013 PrestaShop
+* 2007-2016 PrestaShop
 *
 * NOTICE OF LICENSE
 *
@@ -19,12 +19,11 @@
 * needs please refer to http://www.prestashop.com for more information.
 *
 *  @author PrestaShop SA <contact@prestashop.com>
-*  @copyright  2007-2013 PrestaShop SA
+*  @copyright  2007-2016 PrestaShop SA
 *  @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *  International Registered Trademark & Property of PrestaShop SA
 */
 // @TODO Find the reason why the blockcart.php is includ multiple time
-include_once(dirname(__FILE__).'/blockcart.php');
 $context = Context::getContext();
-$blockCart = new BlockCart();
+$blockCart = Module::getInstanceByName('blockcart');
 echo $blockCart->hookAjaxCall(array('cookie' => $context->cookie, 'cart' => $context->cart));

@@ -1,5 +1,5 @@
 {*
-* 2007-2013 PrestaShop
+* 2007-2016 PrestaShop
 *
 * NOTICE OF LICENSE
 *
@@ -18,12 +18,15 @@
 * needs please refer to http://www.prestashop.com for more information.
 *
 *  @author PrestaShop SA <contact@prestashop.com>
-*  @copyright  2007-2013 PrestaShop SA
+*  @copyright  2007-2016 PrestaShop SA
 *  @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *  International Registered Trademark & Property of PrestaShop SA
 *}
 
-{capture name=path}{l s='Check payment' mod='cheque'}{/capture}
+{capture name=path}
+	<a href="{$link->getPageLink('order', true, NULL, "step=3")|escape:'html':'UTF-8'}" title="{l s='Go back to the Checkout' mod='cheque'}">{l s='Checkout' mod='cheque'}</a><span class="navigation-pipe">{$navigationPipe}</span>{l s='Check payment' mod='cheque'}
+{/capture}
+
 {include file="$tpl_dir./breadcrumb.tpl"}
 
 <h2>{l s='Order summary' mod='cheque'}</h2>
@@ -32,7 +35,7 @@
 {include file="$tpl_dir./order-steps.tpl"}
 
 {if isset($nbProducts) && $nbProducts <= 0}
-	<p class="warning">{l s='Your shopping cart is empty.'}</p>
+	<p class="warning">{l s='Your shopping cart is empty.' mod='cheque'}</p>
 {else}
 
 <h3>{l s='Check payment' mod='cheque'}</h3>
@@ -69,7 +72,7 @@
 	<p>
 		{l s='Check owner and address information will be displayed on the next page.' mod='cheque'}
 		<br /><br />
-		<b>{l s='Please confirm your order by clicking \'I confirm my order\'' mod='cheque'}.</b>
+		<b>{l s='Please confirm your order by clicking \'I confirm my order\'.' mod='cheque'}</b>
 	</p>
 	<p class="cart_navigation" id="cart_navigation">
 		<input type="submit" value="{l s='I confirm my order' mod='cheque'}" class="exclusive_large"/>

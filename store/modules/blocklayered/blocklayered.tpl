@@ -1,5 +1,5 @@
 {*
-* 2007-2014 PrestaShop
+* 2007-2016 PrestaShop
 *
 * NOTICE OF LICENSE
 *
@@ -18,12 +18,11 @@
 * needs please refer to http://www.prestashop.com for more information.
 *
 *  @author PrestaShop SA <contact@prestashop.com>
-*  @copyright  2007-2014 PrestaShop SA
+*  @copyright  2007-2016 PrestaShop SA
 *  @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *  International Registred Trademark & Property of PrestaShop SA
 *}
 
-<!-- Block layered navigation module -->
 {if $nbr_filterBlocks != 0}
 <script type="text/javascript">
 current_friendly_url = '#{$current_friendly_url}';
@@ -34,7 +33,7 @@ param_product_url = '';
 {/if}
 </script>
 <div id="layered_block_left" class="block">
-	<h4 class="title_block">{l s='Catalog' mod='blocklayered'}</h4>
+	<h4 class="title_block">{l s='Product filter' mod='blocklayered'}</h4>
 	<div class="block_content">
 		<form action="#" id="layered_form">
 			<div>
@@ -49,7 +48,7 @@ param_product_url = '';
 									{if isset($filter.slider)}
 										{if $smarty.foreach.f_values.first}
 											<li>
-												<a href="#" rel="layered_{$filter.type}_slider" title="{l s='Cancel' mod='blocklayered'}">x</a>
+												<a href="#" data-rel="layered_{$filter.type}_slider" title="{l s='Cancel' mod='blocklayered'}">x</a>
 												{if $filter.format == 1}
 													{l s='%1$s: %2$s - %3$s'|sprintf:$filter.name:{displayPrice price=$filter.values[0]}:{displayPrice price=$filter.values[1]}|escape:html:'UTF-8' mod='blocklayered'}
 												{else}
@@ -61,8 +60,8 @@ param_product_url = '';
 										{foreach from=$filter.values key=id_value item=value}
 											{if $id_value == $filter_key && !is_numeric($filter_value) && ($filter.type eq 'id_attribute_group' || $filter.type eq 'id_feature') || $id_value == $filter_value && $filter.type neq 'id_attribute_group' && $filter.type neq 'id_feature'}
 												<li>
-													<a href="#" rel="layered_{$filter.type_lite}_{$id_value}" title="{l s='Cancel' mod='blocklayered'}">x</a>
-													{$filter.name|escape:html:'UTF-8'}{l s=':' mod='blocklayered'} {$value.name|escape:html:'UTF-8'}
+													<a href="#" data-rel="layered_{$filter.type_lite}_{$id_value}" title="{l s='Cancel' mod='blocklayered'}">x</a>
+													{l s='%1$s: %2$s' mod='blocklayered' sprintf=[$filter.name, $value.name]}
 												</li>
 											{/if}
 										{/foreach}
@@ -82,7 +81,7 @@ param_product_url = '';
 						<div>
 						{/if}
 						<span class="layered_subtitle">{$filter.name|escape:html:'UTF-8'}</span>
-						<span class="layered_close"><a href="#" rel="ul_layered_{$filter.type}_{$filter.id_key}">v</a></span>
+						<span class="layered_close"><a href="#" data-rel="ul_layered_{$filter.type}_{$filter.id_key}">v</a></span>
 						<div class="clear"></div>
 						<ul id="ul_layered_{$filter.type}_{$filter.id_key}">
 						{if !isset($filter.slider)}
@@ -91,16 +90,16 @@ param_product_url = '';
 									{if $value.nbr || !$hide_0_values}
 									<li class="nomargin {if $smarty.foreach.fe.index >= $filter.filter_show_limit}hiddable{/if}">
 										{if isset($filter.is_color_group) && $filter.is_color_group}
-											<input class="color-option {if isset($value.checked) && $value.checked}on{/if} {if !$value.nbr}disable{/if}" type="button" name="layered_{$filter.type_lite}_{$id_value}" rel="{$id_value}_{$filter.id_key}" id="layered_id_attribute_group_{$id_value}" {if !$value.nbr}disabled="disabled"{/if} style="background: {if isset($value.color)}{if file_exists($col_img_dir|cat:$id_value|cat:'.jpg')}url({$img_col_dir}{$id_value}.jpg){else}{$value.color}{/if}{else}#CCC{/if};" title="{$value.name|escape:html:'UTF-8'}" />
+											<input class="color-option {if isset($value.checked) && $value.checked}on{/if} {if !$value.nbr}disable{/if}" type="button" name="layered_{$filter.type_lite}_{$id_value}" data-rel="{$id_value}_{$filter.id_key}" id="layered_id_attribute_group_{$id_value}" {if !$value.nbr}disabled="disabled"{/if} style="background: {if isset($value.color)}{if file_exists($col_img_dir|cat:$id_value|cat:'.jpg')}url({$img_col_dir}{$id_value}.jpg){else}{$value.color}{/if}{else}#CCC{/if};" title="{$value.name|escape:html:'UTF-8'}" />
 											{if isset($value.checked) && $value.checked}<input type="hidden" name="layered_{$filter.type_lite}_{$id_value}" value="{$id_value}" />{/if}
 										{else}
 											<input type="checkbox" class="checkbox" name="layered_{$filter.type_lite}_{$id_value}" id="layered_{$filter.type_lite}{if $id_value || $filter.type == 'quantity'}_{$id_value}{/if}" value="{$id_value}{if $filter.id_key}_{$filter.id_key}{/if}"{if isset($value.checked)} checked="checked"{/if}{if !$value.nbr} disabled="disabled"{/if} /> 
 										{/if}
-										<label for="layered_{$filter.type_lite}_{$id_value}"{if !$value.nbr} class="disabled"{else}{if isset($filter.is_color_group) && $filter.is_color_group} name="layered_{$filter.type_lite}_{$id_value}" class="layered_color" rel="{$id_value}_{$filter.id_key}"{/if}{/if}>
+										<label for="layered_{$filter.type_lite}_{$id_value}"{if !$value.nbr} class="disabled"{else}{if isset($filter.is_color_group) && $filter.is_color_group} name="layered_{$filter.type_lite}_{$id_value}" class="layered_color" data-rel="{$id_value}_{$filter.id_key}"{/if}{/if}>
 											{if !$value.nbr}
 											{$value.name|escape:html:'UTF-8'}{if $layered_show_qties}<span> ({$value.nbr})</span>{/if}
 											{else}
-											<a href="{$value.link}" rel="{$value.rel}">{$value.name|escape:html:'UTF-8'}{if $layered_show_qties}<span> ({$value.nbr})</span>{/if}</a>
+											<a href="{$value.link}" data-rel="{$value.rel}">{$value.name|escape:html:'UTF-8'}{if $layered_show_qties}<span> ({$value.nbr})</span>{/if}</a>
 											{/if}
 										</label>
 									</li>
@@ -112,16 +111,16 @@ param_product_url = '';
 									{if $value.nbr || !$hide_0_values}
 									<li class="nomargin {if $smarty.foreach.fe.index >= $filter.filter_show_limit}hiddable{/if}">
 										{if isset($filter.is_color_group) && $filter.is_color_group}
-											<input class="radio color-option {if isset($value.checked) && $value.checked}on{/if} {if !$value.nbr}disable{/if}" type="button" name="layered_{$filter.type_lite}_{$id_value}" rel="{$id_value}_{$filter.id_key}" id="layered_id_attribute_group_{$id_value}" {if !$value.nbr}disabled="disabled"{/if} style="background: {if isset($value.color)}{if file_exists($col_img_dir|cat:$id_value|cat:'.jpg')}url({$img_col_dir}{$id_value}.jpg){else}{$value.color}{/if}{else}#CCC{/if};" title="{$value.name|escape:html:'UTF-8'}"/>
+											<input class="radio color-option {if isset($value.checked) && $value.checked}on{/if} {if !$value.nbr}disable{/if}" type="button" name="layered_{$filter.type_lite}_{$id_value}" data-rel="{$id_value}_{$filter.id_key}" id="layered_id_attribute_group_{$id_value}" {if !$value.nbr}disabled="disabled"{/if} style="background: {if isset($value.color)}{if file_exists($col_img_dir|cat:$id_value|cat:'.jpg')}url({$img_col_dir}{$id_value}.jpg){else}{$value.color}{/if}{else}#CCC{/if};" title="{$value.name|escape:html:'UTF-8'}"/>
 											{if isset($value.checked) && $value.checked}<input type="hidden" name="layered_{$filter.type_lite}_{$id_value}" value="{$id_value}" />{/if}
 										{else}
 											<input type="radio" class="radio layered_{$filter.type_lite}_{$id_value}" name="layered_{$filter.type_lite}{if $filter.id_key}_{$filter.id_key}{else}_1{/if}" id="layered_{$filter.type_lite}{if $id_value || $filter.type == 'quantity'}_{$id_value}{if $filter.id_key}_{$filter.id_key}{/if}{/if}" value="{$id_value}{if $filter.id_key}_{$filter.id_key}{/if}"{if isset($value.checked)} checked="checked"{/if}{if !$value.nbr} disabled="disabled"{/if} /> 
 										{/if}
-										<label for="layered_{$filter.type_lite}_{$id_value}"{if !$value.nbr} class="disabled"{else}{if isset($filter.is_color_group) && $filter.is_color_group} name="layered_{$filter.type_lite}_{$id_value}" class="layered_color" rel="{$id_value}_{$filter.id_key}"{/if}{/if}>
+										<label for="layered_{$filter.type_lite}_{$id_value}"{if !$value.nbr} class="disabled"{else}{if isset($filter.is_color_group) && $filter.is_color_group} name="layered_{$filter.type_lite}_{$id_value}" class="layered_color" data-rel="{$id_value}_{$filter.id_key}"{/if}{/if}>
 											{if !$value.nbr}
 												{$value.name|escape:html:'UTF-8'}{if $layered_show_qties}<span> ({$value.nbr})</span>{/if}</a>
 											{else}
-												<a href="{$value.link}" rel="{$value.rel}">{$value.name|escape:html:'UTF-8'}{if $layered_show_qties}<span> ({$value.nbr})</span>{/if}</a>
+												<a href="{$value.link}" data-rel="{$value.rel}">{$value.name|escape:html:'UTF-8'}{if $layered_show_qties}<span> ({$value.nbr})</span>{/if}</a>
 											{/if}
 										</label>
 									</li>
@@ -251,4 +250,3 @@ param_product_url = '';
 	</div>
 </div>
 {/if}
-<!-- /Block layered navigation module -->

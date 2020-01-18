@@ -1,5 +1,5 @@
 /*
-* 2007-2014 PrestaShop
+* 2007-2016 PrestaShop
 *
 * NOTICE OF LICENSE
 *
@@ -18,7 +18,7 @@
 * needs please refer to http://www.prestashop.com for more information.
 *
 *  @author PrestaShop SA <contact@prestashop.com>
-*  @copyright  2007-2014 PrestaShop SA
+*  @copyright  2007-2016 PrestaShop SA
 *  @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *  International Registred Trademark & Property of PrestaShop SA
 */
@@ -37,14 +37,19 @@ $(document).ready(function()
 	$('#layered_form input[type=button], #layered_form label.layered_color').live('click', function()
 	{
 		if (!$('input[name='+$(this).attr('name')+'][type=hidden]').length)
-			$('<input />').attr('type', 'hidden').attr('name', $(this).attr('name')).val($(this).attr('rel')).appendTo('#layered_form');
+			$('<input />').attr('type', 'hidden').attr('name', $(this).attr('name')).val($(this).data('rel')).appendTo('#layered_form');
 		else
 			$('input[name='+$(this).attr('name')+'][type=hidden]').remove();
 		reloadContent();
 	});
 	
 	// Click on checkbox
-	$('#layered_form input[type=checkbox], #layered_form input[type=radio], #layered_form select').live('change', function()
+	$('#layered_form input[type=checkbox], #layered_form input[type=radio]').live('click', function()
+	{
+		reloadContent();
+	});
+
+	$(document).on('change', '#layered_form .select', function(e)
 	{
 		reloadContent();
 	});
@@ -272,31 +277,31 @@ function cancelFilter()
 {
 	$('#enabled_filters a').live('click', function(e)
 	{
-		if ($(this).attr('rel').search(/_slider$/) > 0)
+		if ($(this).data('rel').search(/_slider$/) > 0)
 		{
-			if ($('#'+$(this).attr('rel')).length)
+			if ($('#'+$(this).data('rel')).length)
 			{
-				$('#'+$(this).attr('rel')).slider('values' , 0, $('#'+$(this).attr('rel')).slider('option' , 'min' ));
-				$('#'+$(this).attr('rel')).slider('values' , 1, $('#'+$(this).attr('rel')).slider('option' , 'max' ));
-				$('#'+$(this).attr('rel')).slider('option', 'slide')(0,{values:[$('#'+$(this).attr('rel')).slider( 'option' , 'min' ), $('#'+$(this).attr('rel')).slider( 'option' , 'max' )]});
+				$('#'+$(this).data('rel')).slider('values' , 0, $('#'+$(this).data('rel')).slider('option' , 'min' ));
+				$('#'+$(this).data('rel')).slider('values' , 1, $('#'+$(this).data('rel')).slider('option' , 'max' ));
+				$('#'+$(this).data('rel')).slider('option', 'slide')(0,{values:[$('#'+$(this).data('rel')).slider( 'option' , 'min' ), $('#'+$(this).data('rel')).slider( 'option' , 'max' )]});
 			}
-			else if($('#'+$(this).attr('rel').replace(/_slider$/, '_range_min')).length)
+			else if($('#'+$(this).data('rel').replace(/_slider$/, '_range_min')).length)
 			{
-				$('#'+$(this).attr('rel').replace(/_slider$/, '_range_min')).val($('#'+$(this).attr('rel').replace(/_slider$/, '_range_min')).attr('limitValue'));
-				$('#'+$(this).attr('rel').replace(/_slider$/, '_range_max')).val($('#'+$(this).attr('rel').replace(/_slider$/, '_range_max')).attr('limitValue'));
+				$('#'+$(this).data('rel').replace(/_slider$/, '_range_min')).val($('#'+$(this).data('rel').replace(/_slider$/, '_range_min')).attr('limitValue'));
+				$('#'+$(this).data('rel').replace(/_slider$/, '_range_max')).val($('#'+$(this).data('rel').replace(/_slider$/, '_range_max')).attr('limitValue'));
 			}
 		}
 		else
 		{
-			if ($('option#'+$(this).attr('rel')).length)
+			if ($('option#'+$(this).data('rel')).length)
 			{
-				$('#'+$(this).attr('rel')).parent().val('');
+				$('#'+$(this).data('rel')).parent().val('');
 			}
 			else
 			{
-				$('#'+$(this).attr('rel')).attr('checked', false);
-				$('.'+$(this).attr('rel')).attr('checked', false);
-				$('#layered_form input[type=hidden][name='+$(this).attr('rel')+']').remove();
+				$('#'+$(this).data('rel')).attr('checked', false);
+				$('.'+$(this).data('rel')).attr('checked', false);
+				$('#layered_form input[type=hidden][name='+$(this).data('rel')+']').remove();
 			}
 		}
 		reloadContent();
@@ -310,13 +315,13 @@ function openCloseFilter()
 	{
 		if ($(this).html() == '&lt;')
 		{
-			$('#'+$(this).attr('rel')).show();
+			$('#'+$(this).data('rel')).show();
 			$(this).html('v');
 			$(this).parent().removeClass('closed');
 		}
 		else
 		{
-			$('#'+$(this).attr('rel')).hide();
+			$('#'+$(this).data('rel')).hide();
 			$(this).html('&lt;');
 			$(this).parent().addClass('closed');
 		}
@@ -392,7 +397,7 @@ function reloadContent(params_plus)
 	}
 	
 	var slideUp = true;
-	if (params_plus == undefined)
+	if (params_plus == undefined || !(typeof params_plus == 'string'))
 	{
 		params_plus = '';
 		slideUp = false;
@@ -496,11 +501,11 @@ function reloadContent(params_plus)
 				}
 				else if ($('#layered_'+sliderType+'_range_min').length)
 				{
-					current_friendly_url += '/'+sliderType+'-'+$('#layered_'+sliderType+'_range_min').val()+'-'+$('#layered_'+sliderType+'_range_max').val();
+					if ($('#layered_' + sliderType + '_range_min').attr('limitValue') != $('#layered_'+sliderType+'_range_min').val()
+                                        || $('#layered_' + sliderType + '_range_max').attr('limitValue') != $('#layered_'+sliderType+'_range_max').val())
+						current_friendly_url += '/'+sliderType+'-'+$('#layered_'+sliderType+'_range_min').val()+'-'+$('#layered_'+sliderType+'_range_max').val();
 				}
 			});
-			if (current_friendly_url == '#')
-				current_friendly_url = '#/';
 			window.location = current_friendly_url;
 			lockLocationChecking = true;
 			

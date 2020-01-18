@@ -6,10 +6,7 @@
 	font-size:13px;
 	color:#333;
 	text-transform:uppercase;
-	text-shadow:0 1px 0 #fff;
-}
-#reinsurance_block li a {
-    color:#333;
+	text-shadow:0 1px 0 #fff
 }
 #reinsurance_block .width1 li {width:960px}
 #reinsurance_block .width2 li {width:470px}

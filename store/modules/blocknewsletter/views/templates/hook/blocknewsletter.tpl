@@ -1,5 +1,5 @@
 {*
-* 2007-2013 PrestaShop
+* 2007-2016 PrestaShop
 *
 * NOTICE OF LICENSE
 *
@@ -18,7 +18,7 @@
 * needs please refer to http://www.prestashop.com for more information.
 *
 *  @author PrestaShop SA <contact@prestashop.com>
-*  @copyright  2007-2013 PrestaShop SA
+*  @copyright  2007-2016 PrestaShop SA
 *  @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *  International Registered Trademark & Property of PrestaShop SA
 *}
@@ -31,10 +31,11 @@
 	{if isset($msg) && $msg}
 		<p class="{if $nw_error}warning_inline{else}success_inline{/if}">{$msg}</p>
 	{/if}
-		<form action="{$link->getPageLink('index')|escape:'html'}" method="post">
+		<form action="{$link->getPageLink('index', true)|escape:'html'}" method="post">
 			<p>
 				<input class="inputNew" id="newsletter-input" type="text" name="email" size="18" value="{if isset($value) && $value}{$value}{else}{l s='your e-mail' mod='blocknewsletter'}{/if}" />
 				<input type="submit" value="ok" class="button_mini" name="submitNewsletter" />
+				{hook h='displayGDPRConsent' id_module=$id_module}
 				<input type="hidden" name="action" value="0" />
 			</p>
 		</form>
