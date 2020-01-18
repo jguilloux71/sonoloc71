@@ -1,0 +1,74 @@
+--- classes/Meta.php	2020-01-18 18:59:29.898854900 +0100
++++ classes/Meta.php	2020-01-18 18:40:47.994548000 +0100
+@@ -225,7 +225,7 @@
+ 	public static function getHomeMetas($id_lang, $page_name)
+ 	{
+ 		$metas = Meta::getMetaByPage($page_name, $id_lang);
+-		$ret['meta_title'] = (isset($metas['title']) && $metas['title']) ? $metas['title'].' - '.Configuration::get('PS_SHOP_NAME') : Configuration::get('PS_SHOP_NAME');
++		$ret['meta_title'] = (isset($metas['title']) && $metas['title']) ? Configuration::get('PS_SHOP_NAME').' - '.$metas['title'] : Configuration::get('PS_SHOP_NAME');
+ 		$ret['meta_description'] = (isset($metas['description']) && $metas['description']) ? $metas['description'] : '';
+ 		$ret['meta_keywords'] = (isset($metas['keywords']) && $metas['keywords']) ? $metas['keywords'] :  '';
+ 		return $ret;
+@@ -288,12 +288,12 @@
+ 	
+ 				// Paginate title
+ 				if (!empty($row['meta_title']))
+-					$row['meta_title'] = $title.$row['meta_title'].(!empty($page_number) ? ' ('.$page_number.')' : '').' - '.Configuration::get('PS_SHOP_NAME');
++					$row['meta_title'] = Configuration::get('PS_SHOP_NAME').' - '.$title.$row['meta_title'].(!empty($page_number) ? ' ('.$page_number.')' : '');
+ 				else
+-					$row['meta_title'] = $row['name'].(!empty($page_number) ? ' ('.$page_number.')' : '').' - '.Configuration::get('PS_SHOP_NAME');
++					$row['meta_title'] = Configuration::get('PS_SHOP_NAME').' - '.$row['name'].(!empty($page_number) ? ' ('.$page_number.')' : '');
+ 	
+ 				if (!empty($title))
+-					$row['meta_title'] = $title.(!empty($page_number) ? ' ('.$page_number.')' : '').' - '.Configuration::get('PS_SHOP_NAME');
++					$row['meta_title'] = Configuration::get('PS_SHOP_NAME').' - '.$title.(!empty($page_number) ? ' ('.$page_number.')' : '');
+ 	
+ 				$result = Meta::completeMetaTags($row, $row['name']);
+ 			}
+@@ -325,8 +325,8 @@
+ 		{
+ 			if (empty($row['meta_description']))
+ 				$row['meta_description'] = strip_tags($row['meta_description']);
+-			$row['meta_title'] = ($row['meta_title'] ? $row['meta_title'] : $row['name']).(!empty($page_number) ? ' ('.$page_number.')' : '');
+-			$row['meta_title'] .= ' - '.Configuration::get('PS_SHOP_NAME');
++			$row['meta_title']  = Configuration::get('PS_SHOP_NAME').' - ';
++			$row['meta_title'] .= ($row['meta_title'] ? $row['meta_title'] : $row['name']).(!empty($page_number) ? ' ('.$page_number.')' : '');
+ 			return Meta::completeMetaTags($row, $row['meta_title']);
+ 		}
+ 
+@@ -354,7 +354,7 @@
+ 			if (empty($row['meta_description']))
+ 				$row['meta_description'] = strip_tags($row['meta_description']);
+ 			if (!empty($row['meta_title']))
+-				$row['meta_title'] = $row['meta_title'].' - '.Configuration::get('PS_SHOP_NAME');
++				$row['meta_title'] = Configuration::get('PS_SHOP_NAME').' - '.$row['meta_title'];
+ 			return Meta::completeMetaTags($row, $row['name']);
+ 		}
+ 
+@@ -378,7 +378,7 @@
+ 					AND id_cms = '.(int)$id_cms;
+ 		if ($row = Db::getInstance(_PS_USE_SQL_SLAVE_)->getRow($sql))
+ 		{
+-			$row['meta_title'] = $row['meta_title'].' - '.Configuration::get('PS_SHOP_NAME');
++			$row['meta_title'] = Configuration::get('PS_SHOP_NAME').' - '.$row['meta_title'];
+ 			return Meta::completeMetaTags($row, $row['meta_title']);
+ 		}
+ 
+@@ -402,7 +402,7 @@
+ 					AND id_cms_category = '.(int)$id_cms_category;
+ 		if ($row = Db::getInstance(_PS_USE_SQL_SLAVE_)->getRow($sql))
+ 		{
+-			$row['meta_title'] = $row['meta_title'].' - '.Configuration::get('PS_SHOP_NAME');
++			$row['meta_title'] = Configuration::get('PS_SHOP_NAME').' - '.$row['meta_title'];
+ 			return Meta::completeMetaTags($row, $row['meta_title']);
+ 		}
+ 
+@@ -418,7 +418,7 @@
+ 			$context = Context::getContext();
+ 
+ 		if (empty($meta_tags['meta_title']))
+-			$meta_tags['meta_title'] = $default_value.' - '.Configuration::get('PS_SHOP_NAME');
++			$meta_tags['meta_title'] = Configuration::get('PS_SHOP_NAME').' - '.$default_value;
+ 		if (empty($meta_tags['meta_description']))
+ 			$meta_tags['meta_description'] = Configuration::get('PS_META_DESCRIPTION', $context->language->id) ? Configuration::get('PS_META_DESCRIPTION', $context->language->id) : '';
+ 		if (empty($meta_tags['meta_keywords']))

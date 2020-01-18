@@ -32,6 +32,10 @@
 	font-size:14px;
 	text-decoration:line-through
 }
+span.currency_suffix_discount {
+	font-size:10px;
+	text-decoration:line-through
+}
 #special_block_right .products span.reduction {
 	display:block;
 	float:right;

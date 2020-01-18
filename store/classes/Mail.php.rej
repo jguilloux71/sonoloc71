@@ -1,0 +1,11 @@
+--- classes/Mail.php	2020-01-18 18:59:29.713963000 +0100
++++ classes/Mail.php	2020-01-18 18:40:47.932051400 +0100
+@@ -254,7 +254,7 @@
+ 			}
+ 
+ 			/* Create mail and attach differents parts */
+-			$message = new Swift_Message('['.Configuration::get('PS_SHOP_NAME', null, null, $id_shop).'] '.$subject);
++			$message = new Swift_Message('[Sonoloc71] ' . $subject);
+ 
+ 			$message->setCharset('utf-8');
+ 

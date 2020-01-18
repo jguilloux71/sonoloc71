@@ -1,0 +1,11 @@
+--- modules/bankwire/controllers/front/index.php	2020-01-18 19:00:55.940137000 +0100
++++ modules/bankwire/controllers/front/index.php	2020-01-18 18:42:23.264415000 +0100
+@@ -19,7 +19,7 @@
+ * needs please refer to http://www.prestashop.com for more information.
+ *
+ *  @author PrestaShop SA <contact@prestashop.com>
+-*  @copyright  2007-2013 PrestaShop SA
++*  @copyright  2007-2013 PrestaShop SA
+ *  @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ *  International Registered Trademark & Property of PrestaShop SA
+ */

@@ -1,0 +1,11 @@
+--- modules/blockcontactinfos/index.php	2020-01-18 19:00:59.518451300 +0100
++++ modules/blockcontactinfos/index.php	2020-01-18 18:42:25.789875600 +0100
+@@ -19,7 +19,7 @@
+ * needs please refer to http://www.prestashop.com for more information.
+ *
+ *  @author PrestaShop SA <contact@prestashop.com>
+-*  @copyright  2007-2013 PrestaShop SA
++*  @copyright  2007-2013 PrestaShop SA
+ *  @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ *  International Registered Trademark & Property of PrestaShop SA
+ */
