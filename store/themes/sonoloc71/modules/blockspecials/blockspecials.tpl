@@ -29,11 +29,14 @@
 	<div class="block_content">
 
 {if $special}
+		<p></p>
+		<p class="s_title_block"><strong><a href="{$special.link|escape:'html'}" title="{$special.name|escape:html:'UTF-8'}">{$special.name|escape:html:'UTF-8'}</a></strong></p>
 		<ul class="products clearfix">
 			<li class="product_image">
 				<a href="{$special.link|escape:'html'}"><img src="{$link->getImageLink($special.link_rewrite, $special.id_image, 'medium_default')|escape:'html'}" alt="{$special.legend|escape:html:'UTF-8'}" height="{$mediumSize.height}" width="{$mediumSize.width}" title="{$special.name|escape:html:'UTF-8'}" /></a>
 			</li>
 			<li>
+				<!-- JGU - Disable display about % of reduction
 				{if !$PS_CATALOG_MODE}
 					{if $special.specific_prices}
 						{assign var='specific_prices' value=$special.specific_prices}
@@ -42,24 +45,28 @@
 						{/if}
 					{/if}
 				{/if}
+				-->
 
-					<p class="s_title_block"><a href="{$special.link|escape:'html'}" title="{$special.name|escape:html:'UTF-8'}">{$special.name|escape:html:'UTF-8'}</a></p>
 				{if !$PS_CATALOG_MODE}
 					<div>
-						<span class="price-discount">{if !$priceDisplay}{displayWtPrice p=$special.price_without_reduction}{else}{displayWtPrice p=$priceWithoutReduction_tax_excl}{/if}</span>
-						{if !empty($special.ean13) && $special.ean13 == '9999999999999'}
-							<span class="currency_suffix_discount">/week-end</span>
-						{else}
-							<span class="currency_suffix_discount">/jour</span>
-						{/if}
+						<font style="text-decoration:line-through">
+							<span class="price-discount">{if !$priceDisplay}{displayWtPrice p=$special.price_without_reduction}{else}{displayWtPrice p=$priceWithoutReduction_tax_excl}{/if}</span>
+							{if !empty($special.ean13) && $special.ean13 == '9999999999999'}
+								<span class="currency_suffix_discount">/week-end</span>
+							{else}
+								<span class="currency_suffix_discount">/jour</span>
+							{/if}
+						</font>
 					</div>
 					<div>
-						<span class="price">{if !$priceDisplay}{displayWtPrice p=$special.price}{else}{displayWtPrice p=$special.price_tax_exc}{/if}</span>
-						{if !empty($special.ean13) && $special.ean13 == '9999999999999'}
-							<span class="currency_suffix">/week-end</span>
-						{else}
-							<span class="currency_suffix">/jour</span>
-						{/if}
+						<font color="#9b0000">
+							<span class="price">{if !$priceDisplay}{displayWtPrice p=$special.price}{else}{displayWtPrice p=$special.price_tax_exc}{/if}</span>
+							{if !empty($special.ean13) && $special.ean13 == '9999999999999'}
+								<span class="currency_suffix">/week-end</span>
+							{else}
+								<span class="currency_suffix">/jour</span>
+							{/if}
+						</font>
 					</div>
 				{/if}
 			</li>
