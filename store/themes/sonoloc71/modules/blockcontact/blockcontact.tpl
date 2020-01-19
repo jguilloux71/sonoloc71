@@ -1,5 +1,5 @@
 {*
-* 2007-2013 PrestaShop
+* 2007-2016 PrestaShop
 *
 * NOTICE OF LICENSE
 *
@@ -18,7 +18,7 @@
 * needs please refer to http://www.prestashop.com for more information.
 *
 *  @author PrestaShop SA <contact@prestashop.com>
-*  @copyright  2007-2013 PrestaShop SA
+*  @copyright  2007-2016 PrestaShop SA
 *  @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *  International Registered Trademark & Property of PrestaShop SA
 *}
@@ -27,7 +27,7 @@
 	<h4 class="title_block">Contactez-nous / Devis</h4>
 	<div class="block_content clearfix">
 			<p>Nous sommes disponibles pour répondre à toutes vos questions</p>
-			{if $telnumber != ''}<p class="tel"><span class="label">{l s='Phone:' mod='blockcontact'}</span>{$telnumber|escape:'htmlall':'UTF-8'}</p>{/if}
-			{if $email != ''}<a href="{$email|escape:'htmlall':'UTF-8'}">Cliquez ici pour nous envoyer un message</a>{/if}
+			{if $telnumber != ''}<p class="tel"><span class="label">{l s='Phone:' mod='blockcontact'}</span><span itemprop="telephone"><a href="tel:{$telnumber|escape:'html':'UTF-8'}">{$telnumber|escape:'html':'UTF-8'}</a></span></p>{/if}
+			{if $email != ''}<a href="{$email|escape:'html':'UTF-8'}" title="Cliquez ici pour nous envoyer un message">Cliquez ici pour nous envoyer un message</a>{/if}
 	</div>
 </div>

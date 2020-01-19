@@ -83,6 +83,8 @@
 		</p>
 		<p class="submit">
 			<br/>
+			<input type="text" name="url" value="" class="hidden" />
+			<input type="hidden" name="contactKey" value="{$contactKey}" />
 			<input type="submit" name="submitMessage" id="submitMessage" value="{l s='Send'}" class="button_large" />
 		</p>
 	</fieldset>

@@ -55,7 +55,7 @@ class ContactControllerCore extends FrontController
                 $this->errors[] = Tools::displayError('Bad file extension');
             } elseif ($url === false || !empty($url) || $saveContactKey != (Tools::getValue('contactKey'))) {
                 $this->errors[] = Tools::displayError('An error occurred while sending the message.');
-            else if (!($gcaptcha = (int)(Tools::getValue('g-recaptcha-response')))) {
+	    } elseif (!($gcaptcha = (int)(Tools::getValue('g-recaptcha-response')))) {
                 $this->errors[] = Tools::displayError('Captcha not verified');
             } else {
                 $customer = $this->context->customer;

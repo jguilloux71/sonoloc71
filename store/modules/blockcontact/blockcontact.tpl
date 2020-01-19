@@ -28,6 +28,6 @@
 	<div class="block_content clearfix">
 			<p>Nous sommes disponibles pour répondre à toutes vos questions</p>
 			{if $telnumber != ''}<p class="tel"><span class="label">{l s='Phone:' mod='blockcontact'}</span><span itemprop="telephone"><a href="tel:{$telnumber|escape:'html':'UTF-8'}">{$telnumber|escape:'html':'UTF-8'}</a></span></p>{/if}
-+			{if $email != ''}<a href="{$email|escape:'html':'UTF-8'}" title="Cliquez ici pour nous envoyer un message">Cliquez ici pour nous envoyer un message</a>{/if}
+			{if $email != ''}<a href="{$email|escape:'html':'UTF-8'}" title="Cliquez ici pour nous envoyer un message">Cliquez ici pour nous envoyer un message</a>{/if}
 	</div>
 </div>
