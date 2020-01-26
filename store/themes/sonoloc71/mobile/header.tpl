@@ -66,6 +66,7 @@
 				<div class="ui-block-a">
 					<a href="{$base_dir}" title="{$shop_name|escape:'htmlall':'UTF-8'}" data-ajax="false"><img src="{$logo_url}" alt="{$shop_name|escape:'htmlall':'UTF-8'}" {if $logo_image_width}width="{$logo_image_width}"{/if} {if $logo_image_height}height="{$logo_image_height}" {/if} /></a>
 				</div>
+				<!-- JGU: remove account and cart links
 				<div class="ui-block-b">
 					<div id="block_cart" class="clearfix">
 						{if !$PS_CATALOG_MODE}
@@ -79,5 +80,6 @@
 					</div>
 					{hook h="displayMobileTop"}
 				</div>
+				-->
 			</div><!-- /grid-a -->
 		</div><!-- /header -->
