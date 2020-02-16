@@ -37,6 +37,7 @@ class ContactControllerCore extends FrontController
     {
         if (Tools::isSubmit('submitMessage')) {
             $saveContactKey = $this->context->cookie->contactFormKey;
+            $isMobile = $this->context->isMobile() || $this->context->isTablet();
             $extension = array('.txt', '.rtf', '.doc', '.docx', '.pdf', '.zip', '.png', '.jpeg', '.gif', '.jpg');
             $file_attachment = Tools::fileAttachment('fileUpload');
             $message = Tools::getValue('message'); // Html entities is not usefull, iscleanHtml check there is no bad html tags.
@@ -53,9 +54,9 @@ class ContactControllerCore extends FrontController
                 $this->errors[] = Tools::displayError('An error occurred during the file-upload process.');
             } elseif (!empty($file_attachment['name']) && !in_array(Tools::strtolower(substr($file_attachment['name'], -4)), $extension) && !in_array(Tools::strtolower(substr($file_attachment['name'], -5)), $extension)) {
                 $this->errors[] = Tools::displayError('Bad file extension');
-            } elseif ($url === false || !empty($url) || $saveContactKey != (Tools::getValue('contactKey'))) {
+            } elseif (!$isMobile && ($url === false || !empty($url) || $saveContactKey != (Tools::getValue('contactKey')))) {
                 $this->errors[] = Tools::displayError('An error occurred while sending the message.');
-	    } elseif (!($gcaptcha = (int)(Tools::getValue('g-recaptcha-response')))) {
+            } elseif (!$isMobile && !($gcaptcha = (int)(Tools::getValue('g-recaptcha-response')))) {
                 $this->errors[] = Tools::displayError('Captcha not verified');
             } else {
                 $customer = $this->context->customer;

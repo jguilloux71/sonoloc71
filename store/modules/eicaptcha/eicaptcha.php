@@ -429,6 +429,11 @@ class EiCaptcha extends Module
                 return;
             }
 
+            // Disable on mobile device
+            if ($this->context->isMobile() || $this->context->isTablet()) {
+                return;
+            }
+
             require_once(__DIR__ . '/vendor/autoload.php');
             $captcha = new \ReCaptcha\ReCaptcha(Configuration::get('CAPTCHA_PRIVATE_KEY'));
             $result = $captcha->verify(
@@ -501,6 +506,11 @@ class EiCaptcha extends Module
 
         // no restriction
         if (! Configuration::get('CAPTCHA_ENABLE_CONTACT', 0)) {
+            return 1;
+        }
+
+        // Disable on mobile device
+        if ($this->context->isMobile() || $this->context->isTablet()) {
             return 1;
         }
 

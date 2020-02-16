@@ -26,81 +26,64 @@
 {capture assign='page_title'}{l s='Contact'}{/capture}
 {include file='./page-title.tpl'}
 
+{if isset($confirmation)}
+	<p>{l s='Your message has been successfully sent to our team.'}</p>
+	<ul class="footer_links">
+		<li><a href="{$base_dir}"><img class="icon" alt="" src="{$img_dir}icon/home.gif"/></a><a href="{$base_dir}">{l s='Home'}</a></li>
+	</ul>
+{elseif isset($alreadySent)}
+	<p>{l s='Your message has already been sent.'}</p>
+	<ul class="footer_links">
+		<li><a href="{$base_dir}"><img class="icon" alt="" src="{$img_dir}icon/home.gif"/></a><a href="{$base_dir}">{l s='Home'}</a></li>
+	</ul>
+{else}
 	<div data-role="content" id="content">
 		<p class="bold">{l s='For questions about an order or for more information about our products'}.</p>
 		{include file="./errors.tpl"}
 		<form action="{$request_uri|escape:'htmlall':'UTF-8'}" method="post" class="std" enctype="multipart/form-data">
-			{if isset($customerThread.id_contact)}
-				{foreach from=$contacts item=contact}
-					{if $contact.id_contact == $customerThread.id_contact}
-						<input type="text" id="contact_name" name="contact_name" value="{$contact.name|escape:'htmlall':'UTF-8'}" readonly="readonly" />
-						<input type="hidden" name="id_contact" value="{$contact.id_contact}" />
-					{/if}
-				{/foreach}
-			{else}
-				<select id="id_contact" name="id_contact" onchange="showElemFromSelect('id_contact', 'desc_contact')">
-					<option value="0">- {l s='Subject Heading'} -</option>
-				{foreach from=$contacts item=contact}
-					<option value="{$contact.id_contact|intval}" {if isset($smarty.post.id_contact) && $smarty.post.id_contact == $contact.id_contact}selected="selected"{/if}>{$contact.name|escape:'htmlall':'UTF-8'}</option>
-				{/foreach}
-				</select>
-
-			<p id="desc_contact0" class="desc_contact">&nbsp;</p>
-				{foreach from=$contacts item=contact}
-					<p id="desc_contact{$contact.id_contact|intval}" class="desc_contact" style="display:none;">
-						<label>&nbsp;</label>{$contact.description|escape:'htmlall':'UTF-8'}
-					</p>
-				{/foreach}
-			{/if}
-			
 			<fieldset>
-				{if isset($customerThread.email)}
-					<input class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset" type="email" id="email" name="from" value="{$customerThread.email}" placeholder="{l s='Email address'}" readonly="readonly" />
-				{else}
-					<input class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset" type="email" id="email" name="from" value="{$email}" placeholder="{l s='Email address'}"/>
-				{/if}
-			</fieldset>
-			
-			{if !$PS_CATALOG_MODE}
-				{if (!isset($customerThread.id_order) || $customerThread.id_order > 0)}
-				<fieldset>
-					{if !isset($customerThread.id_order) && isset($isLogged) && $isLogged == 1}
-						<select name="id_order" ><option value="0">- {l s='Order ID'} -</option>
-						{foreach from=$orderList item=order}
-							<option value="{$order.value|intval}" {if $order.selected|intval}selected="selected"{/if}>{$order.label|escape:'htmlall':'UTF-8'}</option>
+				<h3>{l s='send a message'}</h3>
+				<p class="select">
+					<label for="id_contact">{l s='Subject Heading'}</label>
+					{if isset($customerThread.id_contact)}
+						{foreach from=$contacts item=contact}
+							{if $contact.id_contact == $customerThread.id_contact}
+								<input type="text" id="contact_name" name="contact_name" value="{$contact.name|escape:'htmlall':'UTF-8'}" readonly="readonly" />
+								<input type="hidden" name="id_contact" value="{$contact.id_contact}" />
+							{/if}
 						{/foreach}
+						</p>
+					{else}
+						<select id="id_contact" name="id_contact" onchange="showElemFromSelect('id_contact', 'desc_contact')">
+							<option value="0">{l s='-- Choose --'}</option>
+							{foreach from=$contacts item=contact}
+								<option value="{$contact.id_contact|intval}" {if isset($smarty.request.id_contact) && $smarty.request.id_contact == $contact.id_contact}selected="selected"{/if}>{$contact.name|escape:'htmlall':'UTF-8'}</option>
+							{/foreach}
 						</select>
-					{elseif !isset($customerThread.id_order) && !isset($isLogged)}
-						<input type="text" placeholder="{l s='Order ID'}" name="id_order" id="id_order" value="{if isset($customerThread.id_order) && $customerThread.id_order > 0}{$customerThread.id_order|intval}{else}{if isset($smarty.post.id_order)}{$smarty.post.id_order|intval}{/if}{/if}" />
-					{elseif $customerThread.id_order > 0}
-						<input type="text" placeholder="{l s='Order ID'}" name="id_order" id="id_order" value="{$customerThread.id_order|intval}" readonly="readonly" />
-					{/if}
-				</fieldset>
-				{/if}
-				{if isset($isLogged) && $isLogged}
-				<fieldset>
-
-					{if !isset($customerThread.id_product)}
-						{foreach from=$orderedProductList key=id_order item=products name=products}
-							<select name="id_product"><option value="0">- {l s='Product'} -</option>
-								{foreach from=$products item=product}
-									<option value="{$product.value|intval}">{$product.label|escape:'htmlall':'UTF-8'}</option>
-								{/foreach}
-							</select>
+						</p>
+						<p id="desc_contact0" class="desc_contact">&nbsp;</p>
+						{foreach from=$contacts item=contact}
+							<p id="desc_contact{$contact.id_contact|intval}" class="desc_contact" style="display:none;">
+								{$contact.description|escape:'htmlall':'UTF-8'}
+							</p>
 						{/foreach}
-					{elseif $customerThread.id_product > 0}
-						<input type="text" name="id_product" id="id_product" value="{$customerThread.id_product|intval}" readonly="readonly" />
 					{/if}
-				</fieldset>
-				{/if}
-			{/if}
-			
-			<fieldset>
-				<textarea id="message" name="message" placeholder="{l s='Your message'}" rows="15" cols="10">{if isset($message) && $message != ''}{$message|escape:'htmlall':'UTF-8'|stripslashes}{/if}</textarea>
+				<p class="text">
+					<label for="email">{l s='Email address'}</label>
+					{if isset($customerThread.email)}
+						<input type="text" id="email" name="from" value="{$customerThread.email|escape:'htmlall':'UTF-8'}" readonly="readonly" />
+					{else}
+						<input type="text" id="email" name="from" value="{$email|escape:'htmlall':'UTF-8'}" />
+					{/if}
+				</p>
+				<p class="textarea" style="margin-left:3px">
+					<label for="message">{l s='Message'}</label>
+					 <textarea id="message" name="message" rows="30" cols="20">{if isset($message)}{$message|escape:'htmlall':'UTF-8'|stripslashes}{/if}</textarea>
+				</p>
+				<p class="submit">
+					<input type="submit" name="submitMessage" id="submitMessage" value="{l s='Send'}" class="button_large" />
+				</p>
 			</fieldset>
-			
-			<fieldset>
-				<button class="ui-btn-hidden" type="submit" aria-disabled="false" data-theme="a" name="submitMessage" id="submitMessage">{l s='Send'}</button>
-			</fieldset>
-		</form> 
-	</div><!-- /content -->
+		</form>
+	</div> <!-- div content -->
+{/if}
