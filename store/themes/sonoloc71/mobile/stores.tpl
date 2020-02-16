@@ -26,57 +26,26 @@
 {capture assign='page_title'}{l s='Our stores'}{/capture}
 {include file='./page-title.tpl'}
 
-<script type="text/javascript">
-		// <![CDATA[
-		var map;
-		var markers = [];
-		var infoWindow;
-		var locationSelect;
-
-		var defaultLat = '{$defaultLat}';
-		var defaultLong = '{$defaultLong}';
-		
-		var translation_1 = '{l s='No stores were found. Please try selecting a wider radius.' js=1}';
-		var translation_2 = '{l s='store found -- see details:' js=1}';
-		var translation_3 = '{l s='stores found -- view all results:' js=1}';
-		var translation_4 = '{l s='Phone:' js=1}';
-		var translation_5 = '{l s='Get directions' js=1}';
-		var translation_6 = '{l s='Not found' js=1}';
-		
-		var hasStoreIcon = '{$hasStoreIcon}';
-		var distance_unit = '{$distance_unit}';
-		var img_store_dir = '{$img_store_dir}';
-		var img_ps_dir = '{$img_ps_dir}';
-		var searchUrl = '{$searchUrl}';
-		//]]>
-</script>
-
-<!-- Stores -->
-<div data-role="content" id="content" class="stores">
-
-	<div id="stores_search_block">
-		<label for="location">
-			{l s='Enter a location (e.g. zip/postal code, address, city or country) in order to find the nearest stores.'}
-		</label>
-	    <input type="text" name="location" id="location" value="" />
-	</div>
-	
-	<div id="stores_search_block">
-		<label for="radius">{l s='Radius:'} ({$distance_unit})</label>
-		<input type="range" name="radius_slider" id="radius" value="15" min="0" max="100" data-highlight="true"/>
-	</div>
-	
-	<div id="stores_search_block">
-		<button type="submit" data-theme="a" name="submit" value="submit-value" class="ui-btn-hidden" aria-disabled="false">
-			{l s='Search'}
-		</button>
-	</div>
-	
-	<div class="stores_block">
-		<h3 class="bg">{l s='Our stores'}</h3>
-		<ul data-role="listview" data-theme="c" id="stores_list">
-		</ul>
-	</div>
-	{include file="./sitemap.tpl"}
-</div> 
-<!-- END Stores -->
+{if $stores|@count}
+	<p><strong>Pour cause de déplacements fréquents, tout passage à notre dépôt doit se faire sur rendez-vous. En aucun cas vous ne devez vous présenter de vous-mêmes sans nous avoir contacter préalablement.
+	<br/>
+	<br/>
+	Pour nous contacter, vous pouvez le faire par téléphone au 06 52 89 49 86 ou bien par mail via <a href="http://www.sonoloc71.fr/contact-us">notre formulaire en ligne</a>.</strong></p>
+	<br/>
+	<p>Voici les coordonnées de notre dépôt Sonoloc71 :</p>
+	{foreach $stores as $store}
+		<div class="store-small grid_2">
+			{if $store.has_picture}<p><img src="{$img_store_dir}{$store.id_store}-medium_default.jpg" alt="" width="{$mediumSize.width}" height="{$mediumSize.height}" /></p>{/if}
+			<p>
+				<b>{$store.name|escape:'htmlall':'UTF-8'}</b><br />
+				{$store.address1|escape:'htmlall':'UTF-8'}<br />
+				{if $store.address2}{$store.address2|escape:'htmlall':'UTF-8'}{/if}<br />
+				{$store.postcode} {$store.city|escape:'htmlall':'UTF-8'}{if $store.state}, {$store.state}{/if}<br />
+				{$store.country|escape:'htmlall':'UTF-8'}<br />
+				<br/>
+				<strong>{if $store.phone}{l s='Phone:' js=0} {$store.phone}{/if}</strong>
+			</p>
+			{if isset($store.working_hours)}{$store.working_hours}{/if}
+		</div>
+	{/foreach}
+{/if}

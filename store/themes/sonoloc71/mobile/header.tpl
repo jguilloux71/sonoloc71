@@ -80,6 +80,7 @@
 					</div>
 					{hook h="displayMobileTop"}
 				</div>
-				-->
+				JGU -->
 			</div><!-- /grid-a -->
+
 		</div><!-- /header -->
