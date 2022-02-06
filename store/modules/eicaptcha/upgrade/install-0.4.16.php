@@ -1,3 +1,4 @@
+<?php
 /**
  * 2007-2019 PrestaShop
  *
@@ -17,17 +18,22 @@
  * versions in the future. If you wish to customize PrestaShop for your
  * needs please refer to http://www.prestashop.com for more information.
  *
- *  @author    Hennes Hervé <contact@h-hennes.fr>
- *  @copyright 2013-2019 Hennes Hervé
- *  @license   http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ * @author    Hennes Hervé <contact@h-hennes.fr>
+ * @copyright 2013-2019 Hennes Hervé
+ * @license   http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  *  http://www.h-hennes.fr/blog/
- */ 
+ */
 
-var onloadCallback = function() {
-    if ( document.getElementById('recaptchaSendToAFriend')) {
-     grecaptcha.render("recaptchaSendToAFriend", {"sitekey" : RecaptachKey , "theme" : RecaptchaTheme});
-    }
-    if ( document.getElementById('recaptchaProductComments')) {
-     recaptchaProductComment = grecaptcha.render("recaptchaProductComments", {"sitekey" : RecaptachKey, "theme" : RecaptchaTheme});
-    }
-};
+if (!defined('_PS_VERSION_')) {
+    exit;
+}
+
+/**
+ * Install new hook to check captcha on customer account
+ * @param Module $module
+ * @return bool
+ */
+function upgrade_module_0_4_16($module)
+{
+    return $module->registerHook('actionBeforeSubmitAccount');
+}

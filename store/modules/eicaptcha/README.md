@@ -1,12 +1,14 @@
 # eicaptcha
-Module EiCaptcha for prestashop 1.6 and under  
+Module EiCaptcha for prestashop 1.6.x and under  
+
+## Warning
+**THIS VERSION IS DEPRECATED AND WILL NOT BE UPDATED ANYMORE**
+
 For prestashop 1.7 please switch to branch 17  
 
 This module display Google recaptcha on the following forms :
  - contact form
  - account creation form
- - send to a friend form :( <a href="install-sendtoafriend.md">Installation procedure</a> )
- - product comments form : ( <a href="install-productcomments.md">Installation procedure</a> )
 
  This module relies upon the override of the ContactController.
 
@@ -47,6 +49,9 @@ This module display Google recaptcha on the following forms :
 #FR
 
 Module Captcha pour prestashop 1.6 et inférieur  
+La version 1.6 étant à présent relativement ancienne, j'ai décidé d'arrêter le développement de cette version et    
+**CE MODULE NE SERA PLUS MIS A JOUR**
+
 Pour la version pour prestashop 1.7 merci de sélectionner la branche "17"  
 
 N'oubliez pas de lancer la commande "composer install" pour faire fonctionner le module si vous avez cloné ou téléchargé le dépot.  

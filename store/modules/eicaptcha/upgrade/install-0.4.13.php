@@ -24,16 +24,14 @@
 *  http://www.h-hennes.fr/blog/
 */
 
-include(dirname(__FILE__).'/../../config/config.inc.php');
-include(dirname(__FILE__).'/eicaptcha.php');
-
-/* Instanciation du controller */
-$controller = new FrontController();
-if (Configuration::get('PS_SSL_ENABLED') == 1) {
-    $controller->ssl = true;
+if (!defined('_PS_VERSION_')) {
+    exit;
 }
-$controller->init();
 
-$action = Tools::getValue('action');
-$eicaptcha = new EiCaptcha();
-$eicaptcha->hookAjaxCall();
+function upgrade_module_0_4_13($object)
+{
+    return (
+        Configuration::updateValue('CAPTCHA_CONTACTF_BTN_SELECTOR', '#submitMessage')
+        && Configuration::updateValue('CAPTCHA_CONTACTF_INSERT_SELECTOR', '.submit')
+        );
+}
