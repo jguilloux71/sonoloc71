@@ -1,0 +1,28 @@
+name: Deploy - Prod
+
+on:
+  push:
+    branches:
+      - main  # Déclenche le workflow lors des pushes sur la branche 'main'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.SSH_KEY }}
+
+      - name: Deploy to PlanetHoster
+        env:
+          HOST: ${{ secrets.HOST }}
+          USERNAME: ${{ secrets.USERNAME }}
+          REMOTE_PATH: ${{ secrets.REMOTE_PATH }}
+        run: |
+          ssh
+            -o StrictHostKeyChecking=no -p 2604 sonolocf@mars.fr.planethoster.net "exit"
